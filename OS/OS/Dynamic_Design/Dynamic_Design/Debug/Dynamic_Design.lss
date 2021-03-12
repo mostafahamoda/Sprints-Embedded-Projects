@@ -1,0 +1,1979 @@
+
+Dynamic_Design.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000e0a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  00000e0a  00000e9e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000071  0080006a  0080006a  00000ea8  2**0
+                  ALLOC
+  3 .comment      00000060  00000000  00000000  00000ea8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000f08  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000198  00000000  00000000  00000f44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000016cb  00000000  00000000  000010dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000be5  00000000  00000000  000027a7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000011cd  00000000  00000000  0000338c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002e4  00000000  00000000  0000455c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000008d9  00000000  00000000  00004840  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000122f  00000000  00000000  00005119  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000110  00000000  00000000  00006348  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 17 02 	jmp	0x42e	; 0x42e <__vector_7>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea e0       	ldi	r30, 0x0A	; 10
+  68:	fe e0       	ldi	r31, 0x0E	; 14
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 36       	cpi	r26, 0x6A	; 106
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa e6       	ldi	r26, 0x6A	; 106
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 3d       	cpi	r26, 0xDB	; 219
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 dd 02 	call	0x5ba	; 0x5ba <main>
+  8a:	0c 94 03 07 	jmp	0xe06	; 0xe06 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <Start_Festival>:
+ * \param void
+ * \return void
+ *
+ **/     
+extern void Start_Festival(void)
+{
+  92:	0f 93       	push	r16
+	/*
+	*	Initializing the LEDS 
+	*/
+	Init_LEDS();
+  94:	0e 94 9f 02 	call	0x53e	; 0x53e <Init_LEDS>
+	/*
+	*	Initialize the SOS with a certain resolution
+	*/
+	SOS_Init(SYSTEM_TICK_IN_MICRO);
+  98:	68 ee       	ldi	r22, 0xE8	; 232
+  9a:	73 e0       	ldi	r23, 0x03	; 3
+  9c:	80 e0       	ldi	r24, 0x00	; 0
+  9e:	90 e0       	ldi	r25, 0x00	; 0
+  a0:	0e 94 7e 00 	call	0xfc	; 0xfc <SOS_Init>
+	
+	SOS_Create_Task(LED4_Toggle , 2000u , ONE_SHOT , 0);
+  a4:	00 e0       	ldi	r16, 0x00	; 0
+  a6:	21 e0       	ldi	r18, 0x01	; 1
+  a8:	40 ed       	ldi	r20, 0xD0	; 208
+  aa:	57 e0       	ldi	r21, 0x07	; 7
+  ac:	60 e0       	ldi	r22, 0x00	; 0
+  ae:	70 e0       	ldi	r23, 0x00	; 0
+  b0:	82 ed       	ldi	r24, 0xD2	; 210
+  b2:	92 e0       	ldi	r25, 0x02	; 2
+  b4:	0e 94 08 01 	call	0x210	; 0x210 <SOS_Create_Task>
+	SOS_Create_Task(LED1_Toggle , 1000u , PERIODIC , 1);
+  b8:	01 e0       	ldi	r16, 0x01	; 1
+  ba:	20 e0       	ldi	r18, 0x00	; 0
+  bc:	48 ee       	ldi	r20, 0xE8	; 232
+  be:	53 e0       	ldi	r21, 0x03	; 3
+  c0:	60 e0       	ldi	r22, 0x00	; 0
+  c2:	70 e0       	ldi	r23, 0x00	; 0
+  c4:	81 eb       	ldi	r24, 0xB1	; 177
+  c6:	92 e0       	ldi	r25, 0x02	; 2
+  c8:	0e 94 08 01 	call	0x210	; 0x210 <SOS_Create_Task>
+	SOS_Create_Task(LED2_Toggle , 500u , PERIODIC , 2);
+  cc:	02 e0       	ldi	r16, 0x02	; 2
+  ce:	20 e0       	ldi	r18, 0x00	; 0
+  d0:	44 ef       	ldi	r20, 0xF4	; 244
+  d2:	51 e0       	ldi	r21, 0x01	; 1
+  d4:	60 e0       	ldi	r22, 0x00	; 0
+  d6:	70 e0       	ldi	r23, 0x00	; 0
+  d8:	8c eb       	ldi	r24, 0xBC	; 188
+  da:	92 e0       	ldi	r25, 0x02	; 2
+  dc:	0e 94 08 01 	call	0x210	; 0x210 <SOS_Create_Task>
+	SOS_Create_Task(LED3_Toggle , 250u , PERIODIC , 3);
+  e0:	03 e0       	ldi	r16, 0x03	; 3
+  e2:	20 e0       	ldi	r18, 0x00	; 0
+  e4:	4a ef       	ldi	r20, 0xFA	; 250
+  e6:	50 e0       	ldi	r21, 0x00	; 0
+  e8:	60 e0       	ldi	r22, 0x00	; 0
+  ea:	70 e0       	ldi	r23, 0x00	; 0
+  ec:	87 ec       	ldi	r24, 0xC7	; 199
+  ee:	92 e0       	ldi	r25, 0x02	; 2
+  f0:	0e 94 08 01 	call	0x210	; 0x210 <SOS_Create_Task>
+	
+	SOS_Run();
+  f4:	0e 94 bb 01 	call	0x376	; 0x376 <SOS_Run>
+}
+  f8:	0f 91       	pop	r16
+  fa:	08 95       	ret
+
+000000fc <SOS_Init>:
+		/* Handling of using the SOS module before intiializing it */
+		u8Execution_indication = SOS_E_NOT_INTIALIZED_YET ;
+	}
+	
+	return u8Execution_indication ;
+}
+  fc:	cf 92       	push	r12
+  fe:	df 92       	push	r13
+ 100:	ef 92       	push	r14
+ 102:	ff 92       	push	r15
+ 104:	1f 93       	push	r17
+ 106:	cf 93       	push	r28
+ 108:	df 93       	push	r29
+ 10a:	00 d0       	rcall	.+0      	; 0x10c <SOS_Init+0x10>
+ 10c:	00 d0       	rcall	.+0      	; 0x10e <SOS_Init+0x12>
+ 10e:	cd b7       	in	r28, 0x3d	; 61
+ 110:	de b7       	in	r29, 0x3e	; 62
+ 112:	19 82       	std	Y+1, r1	; 0x01
+ 114:	1a 82       	std	Y+2, r1	; 0x02
+ 116:	1b 82       	std	Y+3, r1	; 0x03
+ 118:	1c 82       	std	Y+4, r1	; 0x04
+ 11a:	20 91 65 00 	lds	r18, 0x0065	; 0x800065 <SOS_Config>
+ 11e:	32 2f       	mov	r19, r18
+ 120:	3d 7f       	andi	r19, 0xFD	; 253
+ 122:	89 f4       	brne	.+34     	; 0x146 <SOS_Init+0x4a>
+ 124:	0f 2e       	mov	r0, r31
+ 126:	f0 e8       	ldi	r31, 0x80	; 128
+ 128:	cf 2e       	mov	r12, r31
+ 12a:	ff e7       	ldi	r31, 0x7F	; 127
+ 12c:	df 2e       	mov	r13, r31
+ 12e:	e1 2c       	mov	r14, r1
+ 130:	f1 2c       	mov	r15, r1
+ 132:	f0 2d       	mov	r31, r0
+ 134:	c0 92 c8 00 	sts	0x00C8, r12	; 0x8000c8 <gu32Max_resolution_allowed>
+ 138:	d0 92 c9 00 	sts	0x00C9, r13	; 0x8000c9 <gu32Max_resolution_allowed+0x1>
+ 13c:	e0 92 ca 00 	sts	0x00CA, r14	; 0x8000ca <gu32Max_resolution_allowed+0x2>
+ 140:	f0 92 cb 00 	sts	0x00CB, r15	; 0x8000cb <gu32Max_resolution_allowed+0x3>
+ 144:	13 c0       	rjmp	.+38     	; 0x16c <SOS_Init+0x70>
+ 146:	21 30       	cpi	r18, 0x01	; 1
+ 148:	89 f4       	brne	.+34     	; 0x16c <SOS_Init+0x70>
+ 14a:	0f 2e       	mov	r0, r31
+ 14c:	f0 e8       	ldi	r31, 0x80	; 128
+ 14e:	cf 2e       	mov	r12, r31
+ 150:	dd 24       	eor	r13, r13
+ 152:	da 94       	dec	r13
+ 154:	ff e7       	ldi	r31, 0x7F	; 127
+ 156:	ef 2e       	mov	r14, r31
+ 158:	f1 2c       	mov	r15, r1
+ 15a:	f0 2d       	mov	r31, r0
+ 15c:	c0 92 c8 00 	sts	0x00C8, r12	; 0x8000c8 <gu32Max_resolution_allowed>
+ 160:	d0 92 c9 00 	sts	0x00C9, r13	; 0x8000c9 <gu32Max_resolution_allowed+0x1>
+ 164:	e0 92 ca 00 	sts	0x00CA, r14	; 0x8000ca <gu32Max_resolution_allowed+0x2>
+ 168:	f0 92 cb 00 	sts	0x00CB, r15	; 0x8000cb <gu32Max_resolution_allowed+0x3>
+ 16c:	60 38       	cpi	r22, 0x80	; 128
+ 16e:	71 05       	cpc	r23, r1
+ 170:	81 05       	cpc	r24, r1
+ 172:	91 05       	cpc	r25, r1
+ 174:	e8 f1       	brcs	.+122    	; 0x1f0 <SOS_Init+0xf4>
+ 176:	c0 90 c8 00 	lds	r12, 0x00C8	; 0x8000c8 <gu32Max_resolution_allowed>
+ 17a:	d0 90 c9 00 	lds	r13, 0x00C9	; 0x8000c9 <gu32Max_resolution_allowed+0x1>
+ 17e:	e0 90 ca 00 	lds	r14, 0x00CA	; 0x8000ca <gu32Max_resolution_allowed+0x2>
+ 182:	f0 90 cb 00 	lds	r15, 0x00CB	; 0x8000cb <gu32Max_resolution_allowed+0x3>
+ 186:	c6 16       	cp	r12, r22
+ 188:	d7 06       	cpc	r13, r23
+ 18a:	e8 06       	cpc	r14, r24
+ 18c:	f9 06       	cpc	r15, r25
+ 18e:	90 f1       	brcs	.+100    	; 0x1f4 <SOS_Init+0xf8>
+ 190:	6b 01       	movw	r12, r22
+ 192:	7c 01       	movw	r14, r24
+ 194:	85 e6       	ldi	r24, 0x65	; 101
+ 196:	90 e0       	ldi	r25, 0x00	; 0
+ 198:	0e 94 e0 03 	call	0x7c0	; 0x7c0 <Timer_Init>
+ 19c:	be 01       	movw	r22, r28
+ 19e:	6f 5f       	subi	r22, 0xFF	; 255
+ 1a0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 1a2:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <SOS_Config>
+ 1a6:	0e 94 a1 06 	call	0xd42	; 0xd42 <Timer_Get_Tick_Time>
+ 1aa:	18 2f       	mov	r17, r24
+ 1ac:	69 81       	ldd	r22, Y+1	; 0x01
+ 1ae:	7a 81       	ldd	r23, Y+2	; 0x02
+ 1b0:	8b 81       	ldd	r24, Y+3	; 0x03
+ 1b2:	9c 81       	ldd	r25, Y+4	; 0x04
+ 1b4:	28 ee       	ldi	r18, 0xE8	; 232
+ 1b6:	33 e0       	ldi	r19, 0x03	; 3
+ 1b8:	40 e0       	ldi	r20, 0x00	; 0
+ 1ba:	50 e0       	ldi	r21, 0x00	; 0
+ 1bc:	0e 94 e1 06 	call	0xdc2	; 0xdc2 <__udivmodsi4>
+ 1c0:	29 83       	std	Y+1, r18	; 0x01
+ 1c2:	3a 83       	std	Y+2, r19	; 0x02
+ 1c4:	4b 83       	std	Y+3, r20	; 0x03
+ 1c6:	5c 83       	std	Y+4, r21	; 0x04
+ 1c8:	c7 01       	movw	r24, r14
+ 1ca:	b6 01       	movw	r22, r12
+ 1cc:	0e 94 e1 06 	call	0xdc2	; 0xdc2 <__udivmodsi4>
+ 1d0:	ca 01       	movw	r24, r20
+ 1d2:	b9 01       	movw	r22, r18
+ 1d4:	30 93 c6 00 	sts	0x00C6, r19	; 0x8000c6 <gu16Number_of_resolution_counts+0x1>
+ 1d8:	20 93 c5 00 	sts	0x00C5, r18	; 0x8000c5 <gu16Number_of_resolution_counts>
+ 1dc:	11 11       	cpse	r17, r1
+ 1de:	0b c0       	rjmp	.+22     	; 0x1f6 <SOS_Init+0xfa>
+ 1e0:	21 e0       	ldi	r18, 0x01	; 1
+ 1e2:	20 93 64 00 	sts	0x0064, r18	; 0x800064 <gu8Is_SOS_initialized>
+ 1e6:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <SOS_Config>
+ 1ea:	0e 94 4c 05 	call	0xa98	; 0xa98 <Timer_Start>
+ 1ee:	03 c0       	rjmp	.+6      	; 0x1f6 <SOS_Init+0xfa>
+ 1f0:	14 e0       	ldi	r17, 0x04	; 4
+ 1f2:	01 c0       	rjmp	.+2      	; 0x1f6 <SOS_Init+0xfa>
+ 1f4:	14 e0       	ldi	r17, 0x04	; 4
+ 1f6:	81 2f       	mov	r24, r17
+ 1f8:	0f 90       	pop	r0
+ 1fa:	0f 90       	pop	r0
+ 1fc:	0f 90       	pop	r0
+ 1fe:	0f 90       	pop	r0
+ 200:	df 91       	pop	r29
+ 202:	cf 91       	pop	r28
+ 204:	1f 91       	pop	r17
+ 206:	ff 90       	pop	r15
+ 208:	ef 90       	pop	r14
+ 20a:	df 90       	pop	r13
+ 20c:	cf 90       	pop	r12
+ 20e:	08 95       	ret
+
+00000210 <SOS_Create_Task>:
+ * \param u8Priority (Input) : Determine the priority of the desired task to be run (0 is the lowest priority)
+ * \return  u8 : Indication of the execution if it fails or not 
+ *
+ **/     
+extern Error SOS_Create_Task(pfunc_SOS_Callback pfunc , u32 u32System_ticks_number , u8 u8Periodicity , u8 u8Priority) 
+{
+ 210:	0f 93       	push	r16
+ 212:	fc 01       	movw	r30, r24
+	/*
+	*	An integer that holds the indication of the execution 
+	*/
+	Error u8Execution_indication = SOS_E_OK ;
+	
+	if (SOS_E_INITIALIZED == gu8Is_SOS_initialized)
+ 214:	90 91 64 00 	lds	r25, 0x0064	; 0x800064 <gu8Is_SOS_initialized>
+ 218:	91 30       	cpi	r25, 0x01	; 1
+ 21a:	c1 f5       	brne	.+112    	; 0x28c <SOS_Create_Task+0x7c>
+	{
+		/*
+		*	Making sure that the passed pointer is not a null one 
+		*/
+		if (0 != pfunc )
+ 21c:	30 97       	sbiw	r30, 0x00	; 0
+ 21e:	c1 f1       	breq	.+112    	; 0x290 <SOS_Create_Task+0x80>
+		{
+			if (u32System_ticks_number <= gu32Max_resolution_allowed)
+ 220:	80 91 c8 00 	lds	r24, 0x00C8	; 0x8000c8 <gu32Max_resolution_allowed>
+ 224:	90 91 c9 00 	lds	r25, 0x00C9	; 0x8000c9 <gu32Max_resolution_allowed+0x1>
+ 228:	a0 91 ca 00 	lds	r26, 0x00CA	; 0x8000ca <gu32Max_resolution_allowed+0x2>
+ 22c:	b0 91 cb 00 	lds	r27, 0x00CB	; 0x8000cb <gu32Max_resolution_allowed+0x3>
+ 230:	84 17       	cp	r24, r20
+ 232:	95 07       	cpc	r25, r21
+ 234:	a6 07       	cpc	r26, r22
+ 236:	b7 07       	cpc	r27, r23
+ 238:	68 f1       	brcs	.+90     	; 0x294 <SOS_Create_Task+0x84>
+			{
+				if (PERIODIC == u8Periodicity|| ONE_SHOT == u8Periodicity )
+ 23a:	22 30       	cpi	r18, 0x02	; 2
+ 23c:	68 f5       	brcc	.+90     	; 0x298 <SOS_Create_Task+0x88>
+				{
+					if (gu8Index < SOS_BUFFER_SIZE)
+ 23e:	30 91 c4 00 	lds	r19, 0x00C4	; 0x8000c4 <gu8Index>
+ 242:	3a 30       	cpi	r19, 0x0A	; 10
+ 244:	58 f5       	brcc	.+86     	; 0x29c <SOS_Create_Task+0x8c>
+					{
+						/*
+						*	Passing the event information to the events array
+						*/
+						garstSOS_Tasks[gu8Index].pfunc_event = pfunc ;
+ 246:	83 2f       	mov	r24, r19
+ 248:	90 e0       	ldi	r25, 0x00	; 0
+ 24a:	dc 01       	movw	r26, r24
+ 24c:	aa 0f       	add	r26, r26
+ 24e:	bb 1f       	adc	r27, r27
+ 250:	aa 0f       	add	r26, r26
+ 252:	bb 1f       	adc	r27, r27
+ 254:	aa 0f       	add	r26, r26
+ 256:	bb 1f       	adc	r27, r27
+ 258:	a8 0f       	add	r26, r24
+ 25a:	b9 1f       	adc	r27, r25
+ 25c:	a6 59       	subi	r26, 0x96	; 150
+ 25e:	bf 4f       	sbci	r27, 0xFF	; 255
+ 260:	18 96       	adiw	r26, 0x08	; 8
+ 262:	fc 93       	st	X, r31
+ 264:	ee 93       	st	-X, r30
+ 266:	17 97       	sbiw	r26, 0x07	; 7
+						garstSOS_Tasks[gu8Index].u32System_ticks_number = u32System_ticks_number ;
+ 268:	13 96       	adiw	r26, 0x03	; 3
+ 26a:	4d 93       	st	X+, r20
+ 26c:	5d 93       	st	X+, r21
+ 26e:	6d 93       	st	X+, r22
+ 270:	7c 93       	st	X, r23
+ 272:	16 97       	sbiw	r26, 0x06	; 6
+						garstSOS_Tasks[gu8Index].u8Periodicity = u8Periodicity ;
+ 274:	2c 93       	st	X, r18
+						garstSOS_Tasks[gu8Index].u8Priority = u8Priority ;
+ 276:	11 96       	adiw	r26, 0x01	; 1
+ 278:	0c 93       	st	X, r16
+ 27a:	11 97       	sbiw	r26, 0x01	; 1
+						garstSOS_Tasks[gu8Index].u8Task_state = WAITING ;
+ 27c:	81 e0       	ldi	r24, 0x01	; 1
+ 27e:	12 96       	adiw	r26, 0x02	; 2
+ 280:	8c 93       	st	X, r24
+
+						gu8Index ++ ; /* Increasing the index so the next event can be stored in the next free element in the events array */
+ 282:	3f 5f       	subi	r19, 0xFF	; 255
+ 284:	30 93 c4 00 	sts	0x00C4, r19	; 0x8000c4 <gu8Index>
+extern Error SOS_Create_Task(pfunc_SOS_Callback pfunc , u32 u32System_ticks_number , u8 u8Periodicity , u8 u8Priority) 
+{
+	/*
+	*	An integer that holds the indication of the execution 
+	*/
+	Error u8Execution_indication = SOS_E_OK ;
+ 288:	80 e0       	ldi	r24, 0x00	; 0
+ 28a:	09 c0       	rjmp	.+18     	; 0x29e <SOS_Create_Task+0x8e>
+		}
+	} 
+	else
+	{
+		/* Handling of using the SOS module before intiializing it */
+		u8Execution_indication = SOS_E_NOT_INTIALIZED_YET ;
+ 28c:	82 e0       	ldi	r24, 0x02	; 2
+ 28e:	07 c0       	rjmp	.+14     	; 0x29e <SOS_Create_Task+0x8e>
+			}
+		} 
+		else
+		{
+			/* Handling of entering null pointer*/
+			u8Execution_indication = SOS_E_NULL_POINTER ;
+ 290:	83 e0       	ldi	r24, 0x03	; 3
+ 292:	05 c0       	rjmp	.+10     	; 0x29e <SOS_Create_Task+0x8e>
+				}
+			} 
+			else
+			{
+				/* Handling of entering delay beyond the defined limits */
+				u8Execution_indication = SOS_E_DELAY_TIME_NOT_IN_RANGE ;
+ 294:	86 e0       	ldi	r24, 0x06	; 6
+ 296:	03 c0       	rjmp	.+6      	; 0x29e <SOS_Create_Task+0x8e>
+					}
+				} 
+				else
+				{
+					/* Handling of entering wrong periodicity */
+					u8Execution_indication = SOS_E_WRONG_PERIODICITY ;
+ 298:	85 e0       	ldi	r24, 0x05	; 5
+ 29a:	01 c0       	rjmp	.+2      	; 0x29e <SOS_Create_Task+0x8e>
+						gu8Index ++ ; /* Increasing the index so the next event can be stored in the next free element in the events array */
+					} 
+					else
+					{
+						/* Handling of starting new task while the buffer is full */
+						u8Execution_indication = SOS_E_BUFFER_IS_FULL ;
+ 29c:	87 e0       	ldi	r24, 0x07	; 7
+		/* Handling of using the SOS module before intiializing it */
+		u8Execution_indication = SOS_E_NOT_INTIALIZED_YET ;
+	}
+	
+	return u8Execution_indication ;	
+}
+ 29e:	0f 91       	pop	r16
+ 2a0:	08 95       	ret
+
+000002a2 <SOS_Delete_Task>:
+ * \param pfunc (Input) : A pointer to the function that is desired to be stopped
+ * \return u8 : Indication of the execution if it fails or not 
+ *
+ **/ 
+extern Error SOS_Delete_Task(pfunc_SOS_Callback pfunc) 
+{
+ 2a2:	0f 93       	push	r16
+ 2a4:	1f 93       	push	r17
+ 2a6:	bc 01       	movw	r22, r24
+	*	An integer that holds the indication of the execution 
+	*/
+	Error u8Execution_indication = SOS_E_OK ;
+	u8 u8Count = 0 ;
+	
+	if (SOS_E_INITIALIZED == gu8Is_SOS_initialized)
+ 2a8:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <gu8Is_SOS_initialized>
+ 2ac:	81 30       	cpi	r24, 0x01	; 1
+ 2ae:	09 f0       	breq	.+2      	; 0x2b2 <SOS_Delete_Task+0x10>
+ 2b0:	5a c0       	rjmp	.+180    	; 0x366 <SOS_Delete_Task+0xc4>
+	{
+		if ( 0 != pfunc )
+ 2b2:	61 15       	cp	r22, r1
+ 2b4:	71 05       	cpc	r23, r1
+ 2b6:	09 f4       	brne	.+2      	; 0x2ba <SOS_Delete_Task+0x18>
+ 2b8:	58 c0       	rjmp	.+176    	; 0x36a <SOS_Delete_Task+0xc8>
+		{
+			for (u8Count = 0 ; u8Count < gu8Index ; u8Count ++)
+ 2ba:	80 91 c4 00 	lds	r24, 0x00C4	; 0x8000c4 <gu8Index>
+ 2be:	88 23       	and	r24, r24
+ 2c0:	09 f4       	brne	.+2      	; 0x2c4 <SOS_Delete_Task+0x22>
+ 2c2:	55 c0       	rjmp	.+170    	; 0x36e <SOS_Delete_Task+0xcc>
+ 2c4:	90 e0       	ldi	r25, 0x00	; 0
+			{
+				if (pfunc == garstSOS_Tasks[u8Count].pfunc_event)
+ 2c6:	29 2f       	mov	r18, r25
+ 2c8:	30 e0       	ldi	r19, 0x00	; 0
+ 2ca:	f9 01       	movw	r30, r18
+ 2cc:	ee 0f       	add	r30, r30
+ 2ce:	ff 1f       	adc	r31, r31
+ 2d0:	ee 0f       	add	r30, r30
+ 2d2:	ff 1f       	adc	r31, r31
+ 2d4:	ee 0f       	add	r30, r30
+ 2d6:	ff 1f       	adc	r31, r31
+ 2d8:	e2 0f       	add	r30, r18
+ 2da:	f3 1f       	adc	r31, r19
+ 2dc:	e6 59       	subi	r30, 0x96	; 150
+ 2de:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2e0:	47 81       	ldd	r20, Z+7	; 0x07
+ 2e2:	50 85       	ldd	r21, Z+8	; 0x08
+ 2e4:	64 17       	cp	r22, r20
+ 2e6:	75 07       	cpc	r23, r21
+ 2e8:	b1 f5       	brne	.+108    	; 0x356 <SOS_Delete_Task+0xb4>
+				{
+					gu8Index -- ;
+ 2ea:	81 50       	subi	r24, 0x01	; 1
+					
+					garstSOS_Tasks[u8Count].pfunc_event = garstSOS_Tasks[gu8Index].pfunc_event ;
+ 2ec:	a8 2f       	mov	r26, r24
+ 2ee:	b0 e0       	ldi	r27, 0x00	; 0
+ 2f0:	ad 01       	movw	r20, r26
+ 2f2:	44 0f       	add	r20, r20
+ 2f4:	55 1f       	adc	r21, r21
+ 2f6:	44 0f       	add	r20, r20
+ 2f8:	55 1f       	adc	r21, r21
+ 2fa:	44 0f       	add	r20, r20
+ 2fc:	55 1f       	adc	r21, r21
+ 2fe:	a4 0f       	add	r26, r20
+ 300:	b5 1f       	adc	r27, r21
+ 302:	a6 59       	subi	r26, 0x96	; 150
+ 304:	bf 4f       	sbci	r27, 0xFF	; 255
+ 306:	17 96       	adiw	r26, 0x07	; 7
+ 308:	4d 91       	ld	r20, X+
+ 30a:	5c 91       	ld	r21, X
+ 30c:	18 97       	sbiw	r26, 0x08	; 8
+ 30e:	f9 01       	movw	r30, r18
+ 310:	ee 0f       	add	r30, r30
+ 312:	ff 1f       	adc	r31, r31
+ 314:	ee 0f       	add	r30, r30
+ 316:	ff 1f       	adc	r31, r31
+ 318:	ee 0f       	add	r30, r30
+ 31a:	ff 1f       	adc	r31, r31
+ 31c:	2e 0f       	add	r18, r30
+ 31e:	3f 1f       	adc	r19, r31
+ 320:	f9 01       	movw	r30, r18
+ 322:	e6 59       	subi	r30, 0x96	; 150
+ 324:	ff 4f       	sbci	r31, 0xFF	; 255
+ 326:	50 87       	std	Z+8, r21	; 0x08
+ 328:	47 83       	std	Z+7, r20	; 0x07
+					garstSOS_Tasks[u8Count].u32System_ticks_number = garstSOS_Tasks[gu8Index].u32System_ticks_number ;
+ 32a:	13 96       	adiw	r26, 0x03	; 3
+ 32c:	0d 91       	ld	r16, X+
+ 32e:	1d 91       	ld	r17, X+
+ 330:	2d 91       	ld	r18, X+
+ 332:	3c 91       	ld	r19, X
+ 334:	16 97       	sbiw	r26, 0x06	; 6
+ 336:	03 83       	std	Z+3, r16	; 0x03
+ 338:	14 83       	std	Z+4, r17	; 0x04
+ 33a:	25 83       	std	Z+5, r18	; 0x05
+ 33c:	36 83       	std	Z+6, r19	; 0x06
+					garstSOS_Tasks[u8Count].u8Periodicity = garstSOS_Tasks[gu8Index].u8Periodicity ;
+ 33e:	2c 91       	ld	r18, X
+ 340:	20 83       	st	Z, r18
+					garstSOS_Tasks[u8Count].u8Priority = garstSOS_Tasks[gu8Index].u8Priority ;
+ 342:	11 96       	adiw	r26, 0x01	; 1
+ 344:	2c 91       	ld	r18, X
+ 346:	11 97       	sbiw	r26, 0x01	; 1
+ 348:	21 83       	std	Z+1, r18	; 0x01
+					garstSOS_Tasks[u8Count].u8Task_state = garstSOS_Tasks[gu8Index].u8Periodicity ;
+ 34a:	2c 91       	ld	r18, X
+ 34c:	22 83       	std	Z+2, r18	; 0x02
+					
+					garstSOS_Tasks[gu8Index].pfunc_event = 0 ;
+ 34e:	18 96       	adiw	r26, 0x08	; 8
+ 350:	1c 92       	st	X, r1
+ 352:	1e 92       	st	-X, r1
+ 354:	17 97       	sbiw	r26, 0x07	; 7
+	
+	if (SOS_E_INITIALIZED == gu8Is_SOS_initialized)
+	{
+		if ( 0 != pfunc )
+		{
+			for (u8Count = 0 ; u8Count < gu8Index ; u8Count ++)
+ 356:	9f 5f       	subi	r25, 0xFF	; 255
+ 358:	98 17       	cp	r25, r24
+ 35a:	08 f4       	brcc	.+2      	; 0x35e <SOS_Delete_Task+0xbc>
+ 35c:	b4 cf       	rjmp	.-152    	; 0x2c6 <SOS_Delete_Task+0x24>
+ 35e:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <gu8Index>
+extern Error SOS_Delete_Task(pfunc_SOS_Callback pfunc) 
+{
+	/*
+	*	An integer that holds the indication of the execution 
+	*/
+	Error u8Execution_indication = SOS_E_OK ;
+ 362:	80 e0       	ldi	r24, 0x00	; 0
+ 364:	05 c0       	rjmp	.+10     	; 0x370 <SOS_Delete_Task+0xce>
+		}
+	} 
+	else
+	{
+		/* Handling of using the SOS module before intiializing it */
+		u8Execution_indication = SOS_E_NOT_INTIALIZED_YET ;
+ 366:	82 e0       	ldi	r24, 0x02	; 2
+ 368:	03 c0       	rjmp	.+6      	; 0x370 <SOS_Delete_Task+0xce>
+			}
+		}
+		else
+		{
+			/* Handling of passing null pointer */
+			u8Execution_indication = SOS_E_NULL_POINTER ;
+ 36a:	83 e0       	ldi	r24, 0x03	; 3
+ 36c:	01 c0       	rjmp	.+2      	; 0x370 <SOS_Delete_Task+0xce>
+extern Error SOS_Delete_Task(pfunc_SOS_Callback pfunc) 
+{
+	/*
+	*	An integer that holds the indication of the execution 
+	*/
+	Error u8Execution_indication = SOS_E_OK ;
+ 36e:	80 e0       	ldi	r24, 0x00	; 0
+		/* Handling of using the SOS module before intiializing it */
+		u8Execution_indication = SOS_E_NOT_INTIALIZED_YET ;
+	}
+	
+	return u8Execution_indication ;
+}
+ 370:	1f 91       	pop	r17
+ 372:	0f 91       	pop	r16
+ 374:	08 95       	ret
+
+00000376 <SOS_Run>:
+			{
+				/* Searching for the first ready task to make it a dominant one temporarily */
+				if (NO == u8Is_there_aReady_task)
+				{
+					u8Dominant_task_index = u8Count ;
+					u8Is_there_aReady_task = YES ;
+ 376:	ff 24       	eor	r15, r15
+ 378:	f3 94       	inc	r15
+	while (1)
+	{
+		/*
+		*	Looping for all of the events looking for the dominant task of the all waiting tasks
+		*/
+		for (u8Count = 0 ; u8Count < gu8Index ; u8Count++)
+ 37a:	00 e0       	ldi	r16, 0x00	; 0
+			{
+				/* Searching for the first ready task to make it a dominant one temporarily */
+				if (NO == u8Is_there_aReady_task)
+				{
+					u8Dominant_task_index = u8Count ;
+					u8Is_there_aReady_task = YES ;
+ 37c:	1f 2d       	mov	r17, r15
+	while (1)
+	{
+		/*
+		*	Looping for all of the events looking for the dominant task of the all waiting tasks
+		*/
+		for (u8Count = 0 ; u8Count < gu8Index ; u8Count++)
+ 37e:	40 91 c4 00 	lds	r20, 0x00C4	; 0x8000c4 <gu8Index>
+ 382:	44 23       	and	r20, r20
+ 384:	31 f1       	breq	.+76     	; 0x3d2 <SOS_Run+0x5c>
+ 386:	eb e6       	ldi	r30, 0x6B	; 107
+ 388:	f0 e0       	ldi	r31, 0x00	; 0
+ 38a:	50 2f       	mov	r21, r16
+ 38c:	60 2f       	mov	r22, r16
+ 38e:	80 e0       	ldi	r24, 0x00	; 0
+		{
+			/* Checking for the READY tasks */
+			if ( READY == garstSOS_Tasks[u8Count].u8Task_state)
+ 390:	91 81       	ldd	r25, Z+1	; 0x01
+ 392:	91 11       	cpse	r25, r1
+ 394:	19 c0       	rjmp	.+50     	; 0x3c8 <SOS_Run+0x52>
+			{
+				/* Searching for the first ready task to make it a dominant one temporarily */
+				if (NO == u8Is_there_aReady_task)
+ 396:	55 23       	and	r21, r21
+ 398:	a9 f0       	breq	.+42     	; 0x3c4 <SOS_Run+0x4e>
+					u8Is_there_aReady_task = YES ;
+				} 
+				else
+				{
+					/* Now there are more than one waiting task , so according to the priority, the dominant task will be determined */
+					if (garstSOS_Tasks[u8Count].u8Priority > garstSOS_Tasks[u8Dominant_task_index].u8Priority)
+ 39a:	26 2f       	mov	r18, r22
+ 39c:	30 e0       	ldi	r19, 0x00	; 0
+ 39e:	d9 01       	movw	r26, r18
+ 3a0:	aa 0f       	add	r26, r26
+ 3a2:	bb 1f       	adc	r27, r27
+ 3a4:	aa 0f       	add	r26, r26
+ 3a6:	bb 1f       	adc	r27, r27
+ 3a8:	aa 0f       	add	r26, r26
+ 3aa:	bb 1f       	adc	r27, r27
+ 3ac:	2a 0f       	add	r18, r26
+ 3ae:	3b 1f       	adc	r19, r27
+ 3b0:	d9 01       	movw	r26, r18
+ 3b2:	a6 59       	subi	r26, 0x96	; 150
+ 3b4:	bf 4f       	sbci	r27, 0xFF	; 255
+ 3b6:	20 81       	ld	r18, Z
+ 3b8:	11 96       	adiw	r26, 0x01	; 1
+ 3ba:	9c 91       	ld	r25, X
+ 3bc:	92 17       	cp	r25, r18
+ 3be:	20 f4       	brcc	.+8      	; 0x3c8 <SOS_Run+0x52>
+ 3c0:	68 2f       	mov	r22, r24
+ 3c2:	02 c0       	rjmp	.+4      	; 0x3c8 <SOS_Run+0x52>
+ 3c4:	68 2f       	mov	r22, r24
+			{
+				/* Searching for the first ready task to make it a dominant one temporarily */
+				if (NO == u8Is_there_aReady_task)
+				{
+					u8Dominant_task_index = u8Count ;
+					u8Is_there_aReady_task = YES ;
+ 3c6:	51 2f       	mov	r21, r17
+	while (1)
+	{
+		/*
+		*	Looping for all of the events looking for the dominant task of the all waiting tasks
+		*/
+		for (u8Count = 0 ; u8Count < gu8Index ; u8Count++)
+ 3c8:	8f 5f       	subi	r24, 0xFF	; 255
+ 3ca:	39 96       	adiw	r30, 0x09	; 9
+ 3cc:	84 13       	cpse	r24, r20
+ 3ce:	e0 cf       	rjmp	.-64     	; 0x390 <SOS_Run+0x1a>
+ 3d0:	01 c0       	rjmp	.+2      	; 0x3d4 <SOS_Run+0x5e>
+ 3d2:	60 2f       	mov	r22, r16
+				/* Do nothing */
+			}
+			
+		}
+		
+		if (READY == garstSOS_Tasks[u8Dominant_task_index].u8Task_state)
+ 3d4:	c6 2f       	mov	r28, r22
+ 3d6:	d0 e0       	ldi	r29, 0x00	; 0
+ 3d8:	fe 01       	movw	r30, r28
+ 3da:	ee 0f       	add	r30, r30
+ 3dc:	ff 1f       	adc	r31, r31
+ 3de:	ee 0f       	add	r30, r30
+ 3e0:	ff 1f       	adc	r31, r31
+ 3e2:	ee 0f       	add	r30, r30
+ 3e4:	ff 1f       	adc	r31, r31
+ 3e6:	ec 0f       	add	r30, r28
+ 3e8:	fd 1f       	adc	r31, r29
+ 3ea:	e6 59       	subi	r30, 0x96	; 150
+ 3ec:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3ee:	82 81       	ldd	r24, Z+2	; 0x02
+ 3f0:	81 11       	cpse	r24, r1
+ 3f2:	c7 cf       	rjmp	.-114    	; 0x382 <SOS_Run+0xc>
+		{
+			garstSOS_Tasks[u8Dominant_task_index].u8Task_state = RUNNING ;
+ 3f4:	6f 01       	movw	r12, r30
+ 3f6:	f2 82       	std	Z+2, r15	; 0x02
+			garstSOS_Tasks[u8Dominant_task_index].pfunc_event();
+ 3f8:	07 80       	ldd	r0, Z+7	; 0x07
+ 3fa:	f0 85       	ldd	r31, Z+8	; 0x08
+ 3fc:	e0 2d       	mov	r30, r0
+ 3fe:	09 95       	icall
+			
+			if (ONE_SHOT == garstSOS_Tasks[u8Dominant_task_index].u8Periodicity )
+ 400:	f6 01       	movw	r30, r12
+ 402:	80 81       	ld	r24, Z
+ 404:	81 30       	cpi	r24, 0x01	; 1
+ 406:	31 f4       	brne	.+12     	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+			{
+				SOS_Delete_Task(garstSOS_Tasks[u8Dominant_task_index].pfunc_event);
+ 408:	f6 01       	movw	r30, r12
+ 40a:	87 81       	ldd	r24, Z+7	; 0x07
+ 40c:	90 85       	ldd	r25, Z+8	; 0x08
+ 40e:	0e 94 51 01 	call	0x2a2	; 0x2a2 <SOS_Delete_Task>
+ 412:	b5 cf       	rjmp	.-150    	; 0x37e <SOS_Run+0x8>
+			}
+			else
+			{
+				garstSOS_Tasks[u8Dominant_task_index].u8Task_state = WAITING ;
+ 414:	fe 01       	movw	r30, r28
+ 416:	ee 0f       	add	r30, r30
+ 418:	ff 1f       	adc	r31, r31
+ 41a:	ee 0f       	add	r30, r30
+ 41c:	ff 1f       	adc	r31, r31
+ 41e:	ee 0f       	add	r30, r30
+ 420:	ff 1f       	adc	r31, r31
+ 422:	ec 0f       	add	r30, r28
+ 424:	fd 1f       	adc	r31, r29
+ 426:	e6 59       	subi	r30, 0x96	; 150
+ 428:	ff 4f       	sbci	r31, 0xFF	; 255
+ 42a:	f2 82       	std	Z+2, r15	; 0x02
+ 42c:	a8 cf       	rjmp	.-176    	; 0x37e <SOS_Run+0x8>
+
+0000042e <__vector_7>:
+	}
+}
+
+
+ISR(TIMER1_COMPA_vect)
+{	
+ 42e:	1f 92       	push	r1
+ 430:	0f 92       	push	r0
+ 432:	0f b6       	in	r0, 0x3f	; 63
+ 434:	0f 92       	push	r0
+ 436:	11 24       	eor	r1, r1
+ 438:	ff 92       	push	r15
+ 43a:	0f 93       	push	r16
+ 43c:	1f 93       	push	r17
+ 43e:	2f 93       	push	r18
+ 440:	3f 93       	push	r19
+ 442:	4f 93       	push	r20
+ 444:	5f 93       	push	r21
+ 446:	6f 93       	push	r22
+ 448:	7f 93       	push	r23
+ 44a:	8f 93       	push	r24
+ 44c:	9f 93       	push	r25
+ 44e:	af 93       	push	r26
+ 450:	bf 93       	push	r27
+ 452:	cf 93       	push	r28
+ 454:	df 93       	push	r29
+ 456:	ef 93       	push	r30
+ 458:	ff 93       	push	r31
+	/*
+	*	Flag handling ( It counts up till the RESTART_SYSTEM_TICK_VALUE then go back to 1 )
+	*/
+	if (gu32System_ticks_number <= RESTART_SYSTEM_TICK_VALUE)
+ 45a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 45e:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 462:	a0 91 62 00 	lds	r26, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 466:	b0 91 63 00 	lds	r27, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 46a:	81 34       	cpi	r24, 0x41	; 65
+ 46c:	92 44       	sbci	r25, 0x42	; 66
+ 46e:	af 40       	sbci	r26, 0x0F	; 15
+ 470:	b1 05       	cpc	r27, r1
+ 472:	a0 f4       	brcc	.+40     	; 0x49c <__vector_7+0x6e>
+	{
+		gu32System_ticks_number ++ ;
+ 474:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 478:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 47c:	a0 91 62 00 	lds	r26, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 480:	b0 91 63 00 	lds	r27, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 484:	01 96       	adiw	r24, 0x01	; 1
+ 486:	a1 1d       	adc	r26, r1
+ 488:	b1 1d       	adc	r27, r1
+ 48a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 48e:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 492:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 496:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 49a:	0c c0       	rjmp	.+24     	; 0x4b4 <__vector_7+0x86>
+	} 
+	else
+	{
+		gu32System_ticks_number = 1 ;
+ 49c:	81 e0       	ldi	r24, 0x01	; 1
+ 49e:	90 e0       	ldi	r25, 0x00	; 0
+ 4a0:	a0 e0       	ldi	r26, 0x00	; 0
+ 4a2:	b0 e0       	ldi	r27, 0x00	; 0
+ 4a4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 4a8:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 4ac:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 4b0:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+	}
+	
+	/*
+	*	Letting this loop tells which event needs to be executed and which is not ( Depending on the entered delay time and the periodicity )
+	*/
+	for (gu8Count = 0 ; gu8Count < gu8Index ; gu8Count++)
+ 4b4:	10 92 c7 00 	sts	0x00C7, r1	; 0x8000c7 <gu8Count>
+ 4b8:	f0 90 c4 00 	lds	r15, 0x00C4	; 0x8000c4 <gu8Index>
+ 4bc:	ff 20       	and	r15, r15
+ 4be:	49 f1       	breq	.+82     	; 0x512 <__vector_7+0xe4>
+ 4c0:	cc e6       	ldi	r28, 0x6C	; 108
+ 4c2:	d0 e0       	ldi	r29, 0x00	; 0
+ 4c4:	0f ef       	ldi	r16, 0xFF	; 255
+ 4c6:	0f 0d       	add	r16, r15
+ 4c8:	10 e0       	ldi	r17, 0x00	; 0
+ 4ca:	c8 01       	movw	r24, r16
+ 4cc:	88 0f       	add	r24, r24
+ 4ce:	99 1f       	adc	r25, r25
+ 4d0:	88 0f       	add	r24, r24
+ 4d2:	99 1f       	adc	r25, r25
+ 4d4:	88 0f       	add	r24, r24
+ 4d6:	99 1f       	adc	r25, r25
+ 4d8:	08 0f       	add	r16, r24
+ 4da:	19 1f       	adc	r17, r25
+ 4dc:	0b 58       	subi	r16, 0x8B	; 139
+ 4de:	1f 4f       	sbci	r17, 0xFF	; 255
+	{
+		if (0 == gu32System_ticks_number % garstSOS_Tasks[gu8Count].u32System_ticks_number)
+ 4e0:	60 91 60 00 	lds	r22, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 4e4:	70 91 61 00 	lds	r23, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 4e8:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 4ec:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 4f0:	29 81       	ldd	r18, Y+1	; 0x01
+ 4f2:	3a 81       	ldd	r19, Y+2	; 0x02
+ 4f4:	4b 81       	ldd	r20, Y+3	; 0x03
+ 4f6:	5c 81       	ldd	r21, Y+4	; 0x04
+ 4f8:	0e 94 e1 06 	call	0xdc2	; 0xdc2 <__udivmodsi4>
+ 4fc:	67 2b       	or	r22, r23
+ 4fe:	68 2b       	or	r22, r24
+ 500:	69 2b       	or	r22, r25
+ 502:	09 f4       	brne	.+2      	; 0x506 <__vector_7+0xd8>
+		{
+			garstSOS_Tasks[gu8Count].u8Task_state = READY ;
+ 504:	18 82       	st	Y, r1
+ 506:	29 96       	adiw	r28, 0x09	; 9
+	}
+	
+	/*
+	*	Letting this loop tells which event needs to be executed and which is not ( Depending on the entered delay time and the periodicity )
+	*/
+	for (gu8Count = 0 ; gu8Count < gu8Index ; gu8Count++)
+ 508:	c0 17       	cp	r28, r16
+ 50a:	d1 07       	cpc	r29, r17
+ 50c:	49 f7       	brne	.-46     	; 0x4e0 <__vector_7+0xb2>
+ 50e:	f0 92 c7 00 	sts	0x00C7, r15	; 0x8000c7 <gu8Count>
+		else
+		{
+			/* Do nothing */
+		}
+	}
+}
+ 512:	ff 91       	pop	r31
+ 514:	ef 91       	pop	r30
+ 516:	df 91       	pop	r29
+ 518:	cf 91       	pop	r28
+ 51a:	bf 91       	pop	r27
+ 51c:	af 91       	pop	r26
+ 51e:	9f 91       	pop	r25
+ 520:	8f 91       	pop	r24
+ 522:	7f 91       	pop	r23
+ 524:	6f 91       	pop	r22
+ 526:	5f 91       	pop	r21
+ 528:	4f 91       	pop	r20
+ 52a:	3f 91       	pop	r19
+ 52c:	2f 91       	pop	r18
+ 52e:	1f 91       	pop	r17
+ 530:	0f 91       	pop	r16
+ 532:	ff 90       	pop	r15
+ 534:	0f 90       	pop	r0
+ 536:	0f be       	out	0x3f, r0	; 63
+ 538:	0f 90       	pop	r0
+ 53a:	1f 90       	pop	r1
+ 53c:	18 95       	reti
+
+0000053e <Init_LEDS>:
+ 53e:	61 e0       	ldi	r22, 0x01	; 1
+ 540:	8c e0       	ldi	r24, 0x0C	; 12
+ 542:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <DIO_Pin_Init>
+ 546:	61 e0       	ldi	r22, 0x01	; 1
+ 548:	8d e0       	ldi	r24, 0x0D	; 13
+ 54a:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <DIO_Pin_Init>
+ 54e:	61 e0       	ldi	r22, 0x01	; 1
+ 550:	8e e0       	ldi	r24, 0x0E	; 14
+ 552:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <DIO_Pin_Init>
+ 556:	61 e0       	ldi	r22, 0x01	; 1
+ 558:	8f e0       	ldi	r24, 0x0F	; 15
+ 55a:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <DIO_Pin_Init>
+ 55e:	80 e0       	ldi	r24, 0x00	; 0
+ 560:	08 95       	ret
+
+00000562 <LED1_Toggle>:
+ 562:	8c e0       	ldi	r24, 0x0C	; 12
+ 564:	0e 94 8b 03 	call	0x716	; 0x716 <DIO_Pin_Toggle>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 568:	8f e3       	ldi	r24, 0x3F	; 63
+ 56a:	9c e9       	ldi	r25, 0x9C	; 156
+ 56c:	01 97       	sbiw	r24, 0x01	; 1
+ 56e:	f1 f7       	brne	.-4      	; 0x56c <LED1_Toggle+0xa>
+ 570:	00 c0       	rjmp	.+0      	; 0x572 <LED1_Toggle+0x10>
+ 572:	00 00       	nop
+ 574:	80 e0       	ldi	r24, 0x00	; 0
+ 576:	08 95       	ret
+
+00000578 <LED2_Toggle>:
+ 578:	8d e0       	ldi	r24, 0x0D	; 13
+ 57a:	0e 94 8b 03 	call	0x716	; 0x716 <DIO_Pin_Toggle>
+ 57e:	8f e3       	ldi	r24, 0x3F	; 63
+ 580:	9c e9       	ldi	r25, 0x9C	; 156
+ 582:	01 97       	sbiw	r24, 0x01	; 1
+ 584:	f1 f7       	brne	.-4      	; 0x582 <LED2_Toggle+0xa>
+ 586:	00 c0       	rjmp	.+0      	; 0x588 <LED2_Toggle+0x10>
+ 588:	00 00       	nop
+ 58a:	80 e0       	ldi	r24, 0x00	; 0
+ 58c:	08 95       	ret
+
+0000058e <LED3_Toggle>:
+ 58e:	8e e0       	ldi	r24, 0x0E	; 14
+ 590:	0e 94 8b 03 	call	0x716	; 0x716 <DIO_Pin_Toggle>
+ 594:	8f e3       	ldi	r24, 0x3F	; 63
+ 596:	9c e9       	ldi	r25, 0x9C	; 156
+ 598:	01 97       	sbiw	r24, 0x01	; 1
+ 59a:	f1 f7       	brne	.-4      	; 0x598 <LED3_Toggle+0xa>
+ 59c:	00 c0       	rjmp	.+0      	; 0x59e <LED3_Toggle+0x10>
+ 59e:	00 00       	nop
+ 5a0:	80 e0       	ldi	r24, 0x00	; 0
+ 5a2:	08 95       	ret
+
+000005a4 <LED4_Toggle>:
+ 5a4:	8f e0       	ldi	r24, 0x0F	; 15
+ 5a6:	0e 94 8b 03 	call	0x716	; 0x716 <DIO_Pin_Toggle>
+ 5aa:	8f e3       	ldi	r24, 0x3F	; 63
+ 5ac:	9c e9       	ldi	r25, 0x9C	; 156
+ 5ae:	01 97       	sbiw	r24, 0x01	; 1
+ 5b0:	f1 f7       	brne	.-4      	; 0x5ae <LED4_Toggle+0xa>
+ 5b2:	00 c0       	rjmp	.+0      	; 0x5b4 <LED4_Toggle+0x10>
+ 5b4:	00 00       	nop
+ 5b6:	80 e0       	ldi	r24, 0x00	; 0
+ 5b8:	08 95       	ret
+
+000005ba <main>:
+
+#include "Festival.h"
+
+int main()
+{		
+	Start_Festival();
+ 5ba:	0e 94 49 00 	call	0x92	; 0x92 <Start_Festival>
+}
+ 5be:	80 e0       	ldi	r24, 0x00	; 0
+ 5c0:	90 e0       	ldi	r25, 0x00	; 0
+ 5c2:	08 95       	ret
+
+000005c4 <DIO_Pin_Init>:
+ 5c4:	80 32       	cpi	r24, 0x20	; 32
+ 5c6:	08 f0       	brcs	.+2      	; 0x5ca <DIO_Pin_Init+0x6>
+ 5c8:	9e c0       	rjmp	.+316    	; 0x706 <DIO_Pin_Init+0x142>
+ 5ca:	61 11       	cpse	r22, r1
+ 5cc:	4f c0       	rjmp	.+158    	; 0x66c <DIO_Pin_Init+0xa8>
+ 5ce:	88 30       	cpi	r24, 0x08	; 8
+ 5d0:	80 f4       	brcc	.+32     	; 0x5f2 <DIO_Pin_Init+0x2e>
+ 5d2:	4a b3       	in	r20, 0x1a	; 26
+ 5d4:	87 70       	andi	r24, 0x07	; 7
+ 5d6:	21 e0       	ldi	r18, 0x01	; 1
+ 5d8:	30 e0       	ldi	r19, 0x00	; 0
+ 5da:	b9 01       	movw	r22, r18
+ 5dc:	02 c0       	rjmp	.+4      	; 0x5e2 <DIO_Pin_Init+0x1e>
+ 5de:	66 0f       	add	r22, r22
+ 5e0:	77 1f       	adc	r23, r23
+ 5e2:	8a 95       	dec	r24
+ 5e4:	e2 f7       	brpl	.-8      	; 0x5de <DIO_Pin_Init+0x1a>
+ 5e6:	cb 01       	movw	r24, r22
+ 5e8:	80 95       	com	r24
+ 5ea:	84 23       	and	r24, r20
+ 5ec:	8a bb       	out	0x1a, r24	; 26
+ 5ee:	80 e0       	ldi	r24, 0x00	; 0
+ 5f0:	08 95       	ret
+ 5f2:	98 ef       	ldi	r25, 0xF8	; 248
+ 5f4:	98 0f       	add	r25, r24
+ 5f6:	98 30       	cpi	r25, 0x08	; 8
+ 5f8:	80 f4       	brcc	.+32     	; 0x61a <DIO_Pin_Init+0x56>
+ 5fa:	47 b3       	in	r20, 0x17	; 23
+ 5fc:	87 70       	andi	r24, 0x07	; 7
+ 5fe:	21 e0       	ldi	r18, 0x01	; 1
+ 600:	30 e0       	ldi	r19, 0x00	; 0
+ 602:	b9 01       	movw	r22, r18
+ 604:	02 c0       	rjmp	.+4      	; 0x60a <DIO_Pin_Init+0x46>
+ 606:	66 0f       	add	r22, r22
+ 608:	77 1f       	adc	r23, r23
+ 60a:	8a 95       	dec	r24
+ 60c:	e2 f7       	brpl	.-8      	; 0x606 <DIO_Pin_Init+0x42>
+ 60e:	cb 01       	movw	r24, r22
+ 610:	80 95       	com	r24
+ 612:	84 23       	and	r24, r20
+ 614:	87 bb       	out	0x17, r24	; 23
+ 616:	80 e0       	ldi	r24, 0x00	; 0
+ 618:	08 95       	ret
+ 61a:	90 ef       	ldi	r25, 0xF0	; 240
+ 61c:	98 0f       	add	r25, r24
+ 61e:	98 30       	cpi	r25, 0x08	; 8
+ 620:	80 f4       	brcc	.+32     	; 0x642 <DIO_Pin_Init+0x7e>
+ 622:	44 b3       	in	r20, 0x14	; 20
+ 624:	87 70       	andi	r24, 0x07	; 7
+ 626:	21 e0       	ldi	r18, 0x01	; 1
+ 628:	30 e0       	ldi	r19, 0x00	; 0
+ 62a:	b9 01       	movw	r22, r18
+ 62c:	02 c0       	rjmp	.+4      	; 0x632 <DIO_Pin_Init+0x6e>
+ 62e:	66 0f       	add	r22, r22
+ 630:	77 1f       	adc	r23, r23
+ 632:	8a 95       	dec	r24
+ 634:	e2 f7       	brpl	.-8      	; 0x62e <DIO_Pin_Init+0x6a>
+ 636:	cb 01       	movw	r24, r22
+ 638:	80 95       	com	r24
+ 63a:	84 23       	and	r24, r20
+ 63c:	84 bb       	out	0x14, r24	; 20
+ 63e:	80 e0       	ldi	r24, 0x00	; 0
+ 640:	08 95       	ret
+ 642:	98 ee       	ldi	r25, 0xE8	; 232
+ 644:	98 0f       	add	r25, r24
+ 646:	98 30       	cpi	r25, 0x08	; 8
+ 648:	08 f0       	brcs	.+2      	; 0x64c <DIO_Pin_Init+0x88>
+ 64a:	5f c0       	rjmp	.+190    	; 0x70a <DIO_Pin_Init+0x146>
+ 64c:	41 b3       	in	r20, 0x11	; 17
+ 64e:	87 70       	andi	r24, 0x07	; 7
+ 650:	21 e0       	ldi	r18, 0x01	; 1
+ 652:	30 e0       	ldi	r19, 0x00	; 0
+ 654:	b9 01       	movw	r22, r18
+ 656:	02 c0       	rjmp	.+4      	; 0x65c <DIO_Pin_Init+0x98>
+ 658:	66 0f       	add	r22, r22
+ 65a:	77 1f       	adc	r23, r23
+ 65c:	8a 95       	dec	r24
+ 65e:	e2 f7       	brpl	.-8      	; 0x658 <DIO_Pin_Init+0x94>
+ 660:	cb 01       	movw	r24, r22
+ 662:	80 95       	com	r24
+ 664:	84 23       	and	r24, r20
+ 666:	81 bb       	out	0x11, r24	; 17
+ 668:	80 e0       	ldi	r24, 0x00	; 0
+ 66a:	08 95       	ret
+ 66c:	61 30       	cpi	r22, 0x01	; 1
+ 66e:	09 f0       	breq	.+2      	; 0x672 <DIO_Pin_Init+0xae>
+ 670:	4e c0       	rjmp	.+156    	; 0x70e <DIO_Pin_Init+0x14a>
+ 672:	88 30       	cpi	r24, 0x08	; 8
+ 674:	78 f4       	brcc	.+30     	; 0x694 <DIO_Pin_Init+0xd0>
+ 676:	4a b3       	in	r20, 0x1a	; 26
+ 678:	87 70       	andi	r24, 0x07	; 7
+ 67a:	21 e0       	ldi	r18, 0x01	; 1
+ 67c:	30 e0       	ldi	r19, 0x00	; 0
+ 67e:	b9 01       	movw	r22, r18
+ 680:	02 c0       	rjmp	.+4      	; 0x686 <DIO_Pin_Init+0xc2>
+ 682:	66 0f       	add	r22, r22
+ 684:	77 1f       	adc	r23, r23
+ 686:	8a 95       	dec	r24
+ 688:	e2 f7       	brpl	.-8      	; 0x682 <DIO_Pin_Init+0xbe>
+ 68a:	cb 01       	movw	r24, r22
+ 68c:	84 2b       	or	r24, r20
+ 68e:	8a bb       	out	0x1a, r24	; 26
+ 690:	80 e0       	ldi	r24, 0x00	; 0
+ 692:	08 95       	ret
+ 694:	98 ef       	ldi	r25, 0xF8	; 248
+ 696:	98 0f       	add	r25, r24
+ 698:	98 30       	cpi	r25, 0x08	; 8
+ 69a:	78 f4       	brcc	.+30     	; 0x6ba <DIO_Pin_Init+0xf6>
+ 69c:	47 b3       	in	r20, 0x17	; 23
+ 69e:	87 70       	andi	r24, 0x07	; 7
+ 6a0:	21 e0       	ldi	r18, 0x01	; 1
+ 6a2:	30 e0       	ldi	r19, 0x00	; 0
+ 6a4:	b9 01       	movw	r22, r18
+ 6a6:	02 c0       	rjmp	.+4      	; 0x6ac <DIO_Pin_Init+0xe8>
+ 6a8:	66 0f       	add	r22, r22
+ 6aa:	77 1f       	adc	r23, r23
+ 6ac:	8a 95       	dec	r24
+ 6ae:	e2 f7       	brpl	.-8      	; 0x6a8 <DIO_Pin_Init+0xe4>
+ 6b0:	cb 01       	movw	r24, r22
+ 6b2:	84 2b       	or	r24, r20
+ 6b4:	87 bb       	out	0x17, r24	; 23
+ 6b6:	80 e0       	ldi	r24, 0x00	; 0
+ 6b8:	08 95       	ret
+ 6ba:	90 ef       	ldi	r25, 0xF0	; 240
+ 6bc:	98 0f       	add	r25, r24
+ 6be:	98 30       	cpi	r25, 0x08	; 8
+ 6c0:	78 f4       	brcc	.+30     	; 0x6e0 <DIO_Pin_Init+0x11c>
+ 6c2:	44 b3       	in	r20, 0x14	; 20
+ 6c4:	87 70       	andi	r24, 0x07	; 7
+ 6c6:	21 e0       	ldi	r18, 0x01	; 1
+ 6c8:	30 e0       	ldi	r19, 0x00	; 0
+ 6ca:	b9 01       	movw	r22, r18
+ 6cc:	02 c0       	rjmp	.+4      	; 0x6d2 <DIO_Pin_Init+0x10e>
+ 6ce:	66 0f       	add	r22, r22
+ 6d0:	77 1f       	adc	r23, r23
+ 6d2:	8a 95       	dec	r24
+ 6d4:	e2 f7       	brpl	.-8      	; 0x6ce <DIO_Pin_Init+0x10a>
+ 6d6:	cb 01       	movw	r24, r22
+ 6d8:	84 2b       	or	r24, r20
+ 6da:	84 bb       	out	0x14, r24	; 20
+ 6dc:	80 e0       	ldi	r24, 0x00	; 0
+ 6de:	08 95       	ret
+ 6e0:	98 ee       	ldi	r25, 0xE8	; 232
+ 6e2:	98 0f       	add	r25, r24
+ 6e4:	98 30       	cpi	r25, 0x08	; 8
+ 6e6:	a8 f4       	brcc	.+42     	; 0x712 <DIO_Pin_Init+0x14e>
+ 6e8:	41 b3       	in	r20, 0x11	; 17
+ 6ea:	87 70       	andi	r24, 0x07	; 7
+ 6ec:	21 e0       	ldi	r18, 0x01	; 1
+ 6ee:	30 e0       	ldi	r19, 0x00	; 0
+ 6f0:	b9 01       	movw	r22, r18
+ 6f2:	02 c0       	rjmp	.+4      	; 0x6f8 <DIO_Pin_Init+0x134>
+ 6f4:	66 0f       	add	r22, r22
+ 6f6:	77 1f       	adc	r23, r23
+ 6f8:	8a 95       	dec	r24
+ 6fa:	e2 f7       	brpl	.-8      	; 0x6f4 <DIO_Pin_Init+0x130>
+ 6fc:	cb 01       	movw	r24, r22
+ 6fe:	84 2b       	or	r24, r20
+ 700:	81 bb       	out	0x11, r24	; 17
+ 702:	80 e0       	ldi	r24, 0x00	; 0
+ 704:	08 95       	ret
+ 706:	81 e0       	ldi	r24, 0x01	; 1
+ 708:	08 95       	ret
+ 70a:	80 e0       	ldi	r24, 0x00	; 0
+ 70c:	08 95       	ret
+ 70e:	83 e0       	ldi	r24, 0x03	; 3
+ 710:	08 95       	ret
+ 712:	80 e0       	ldi	r24, 0x00	; 0
+ 714:	08 95       	ret
+
+00000716 <DIO_Pin_Toggle>:
+ 716:	80 32       	cpi	r24, 0x20	; 32
+ 718:	08 f0       	brcs	.+2      	; 0x71c <DIO_Pin_Toggle+0x6>
+ 71a:	4a c0       	rjmp	.+148    	; 0x7b0 <DIO_Pin_Toggle+0x9a>
+ 71c:	88 30       	cpi	r24, 0x08	; 8
+ 71e:	78 f4       	brcc	.+30     	; 0x73e <DIO_Pin_Toggle+0x28>
+ 720:	4b b3       	in	r20, 0x1b	; 27
+ 722:	87 70       	andi	r24, 0x07	; 7
+ 724:	21 e0       	ldi	r18, 0x01	; 1
+ 726:	30 e0       	ldi	r19, 0x00	; 0
+ 728:	b9 01       	movw	r22, r18
+ 72a:	02 c0       	rjmp	.+4      	; 0x730 <DIO_Pin_Toggle+0x1a>
+ 72c:	66 0f       	add	r22, r22
+ 72e:	77 1f       	adc	r23, r23
+ 730:	8a 95       	dec	r24
+ 732:	e2 f7       	brpl	.-8      	; 0x72c <DIO_Pin_Toggle+0x16>
+ 734:	cb 01       	movw	r24, r22
+ 736:	84 27       	eor	r24, r20
+ 738:	8b bb       	out	0x1b, r24	; 27
+ 73a:	80 e0       	ldi	r24, 0x00	; 0
+ 73c:	08 95       	ret
+ 73e:	98 ef       	ldi	r25, 0xF8	; 248
+ 740:	98 0f       	add	r25, r24
+ 742:	98 30       	cpi	r25, 0x08	; 8
+ 744:	78 f4       	brcc	.+30     	; 0x764 <DIO_Pin_Toggle+0x4e>
+ 746:	48 b3       	in	r20, 0x18	; 24
+ 748:	87 70       	andi	r24, 0x07	; 7
+ 74a:	21 e0       	ldi	r18, 0x01	; 1
+ 74c:	30 e0       	ldi	r19, 0x00	; 0
+ 74e:	b9 01       	movw	r22, r18
+ 750:	02 c0       	rjmp	.+4      	; 0x756 <DIO_Pin_Toggle+0x40>
+ 752:	66 0f       	add	r22, r22
+ 754:	77 1f       	adc	r23, r23
+ 756:	8a 95       	dec	r24
+ 758:	e2 f7       	brpl	.-8      	; 0x752 <DIO_Pin_Toggle+0x3c>
+ 75a:	cb 01       	movw	r24, r22
+ 75c:	84 27       	eor	r24, r20
+ 75e:	88 bb       	out	0x18, r24	; 24
+ 760:	80 e0       	ldi	r24, 0x00	; 0
+ 762:	08 95       	ret
+ 764:	90 ef       	ldi	r25, 0xF0	; 240
+ 766:	98 0f       	add	r25, r24
+ 768:	98 30       	cpi	r25, 0x08	; 8
+ 76a:	78 f4       	brcc	.+30     	; 0x78a <DIO_Pin_Toggle+0x74>
+ 76c:	45 b3       	in	r20, 0x15	; 21
+ 76e:	87 70       	andi	r24, 0x07	; 7
+ 770:	21 e0       	ldi	r18, 0x01	; 1
+ 772:	30 e0       	ldi	r19, 0x00	; 0
+ 774:	b9 01       	movw	r22, r18
+ 776:	02 c0       	rjmp	.+4      	; 0x77c <DIO_Pin_Toggle+0x66>
+ 778:	66 0f       	add	r22, r22
+ 77a:	77 1f       	adc	r23, r23
+ 77c:	8a 95       	dec	r24
+ 77e:	e2 f7       	brpl	.-8      	; 0x778 <DIO_Pin_Toggle+0x62>
+ 780:	cb 01       	movw	r24, r22
+ 782:	84 27       	eor	r24, r20
+ 784:	85 bb       	out	0x15, r24	; 21
+ 786:	80 e0       	ldi	r24, 0x00	; 0
+ 788:	08 95       	ret
+ 78a:	98 ee       	ldi	r25, 0xE8	; 232
+ 78c:	98 0f       	add	r25, r24
+ 78e:	98 30       	cpi	r25, 0x08	; 8
+ 790:	88 f4       	brcc	.+34     	; 0x7b4 <DIO_Pin_Toggle+0x9e>
+ 792:	42 b3       	in	r20, 0x12	; 18
+ 794:	87 70       	andi	r24, 0x07	; 7
+ 796:	21 e0       	ldi	r18, 0x01	; 1
+ 798:	30 e0       	ldi	r19, 0x00	; 0
+ 79a:	b9 01       	movw	r22, r18
+ 79c:	02 c0       	rjmp	.+4      	; 0x7a2 <DIO_Pin_Toggle+0x8c>
+ 79e:	66 0f       	add	r22, r22
+ 7a0:	77 1f       	adc	r23, r23
+ 7a2:	8a 95       	dec	r24
+ 7a4:	e2 f7       	brpl	.-8      	; 0x79e <DIO_Pin_Toggle+0x88>
+ 7a6:	cb 01       	movw	r24, r22
+ 7a8:	84 27       	eor	r24, r20
+ 7aa:	82 bb       	out	0x12, r24	; 18
+ 7ac:	80 e0       	ldi	r24, 0x00	; 0
+ 7ae:	08 95       	ret
+ 7b0:	81 e0       	ldi	r24, 0x01	; 1
+ 7b2:	08 95       	ret
+ 7b4:	80 e0       	ldi	r24, 0x00	; 0
+ 7b6:	08 95       	ret
+
+000007b8 <Enable_GlobalInterrupt>:
+ 7b8:	8f b7       	in	r24, 0x3f	; 63
+ 7ba:	80 68       	ori	r24, 0x80	; 128
+ 7bc:	8f bf       	out	0x3f, r24	; 63
+ 7be:	08 95       	ret
+
+000007c0 <Timer_Init>:
+ 7c0:	00 97       	sbiw	r24, 0x00	; 0
+ 7c2:	09 f4       	brne	.+2      	; 0x7c6 <Timer_Init+0x6>
+ 7c4:	5f c1       	rjmp	.+702    	; 0xa84 <__stack+0x225>
+ 7c6:	fc 01       	movw	r30, r24
+ 7c8:	80 81       	ld	r24, Z
+ 7ca:	81 11       	cpse	r24, r1
+ 7cc:	66 c0       	rjmp	.+204    	; 0x89a <__stack+0x3b>
+ 7ce:	81 81       	ldd	r24, Z+1	; 0x01
+ 7d0:	80 93 d8 00 	sts	0x00D8, r24	; 0x8000d8 <gau8Timer_PSC>
+ 7d4:	83 81       	ldd	r24, Z+3	; 0x03
+ 7d6:	81 11       	cpse	r24, r1
+ 7d8:	07 c0       	rjmp	.+14     	; 0x7e8 <Timer_Init+0x28>
+ 7da:	0e 94 dc 03 	call	0x7b8	; 0x7b8 <Enable_GlobalInterrupt>
+ 7de:	89 b7       	in	r24, 0x39	; 57
+ 7e0:	81 60       	ori	r24, 0x01	; 1
+ 7e2:	89 bf       	out	0x39, r24	; 57
+ 7e4:	80 e0       	ldi	r24, 0x00	; 0
+ 7e6:	08 c0       	rjmp	.+16     	; 0x7f8 <Timer_Init+0x38>
+ 7e8:	81 30       	cpi	r24, 0x01	; 1
+ 7ea:	29 f4       	brne	.+10     	; 0x7f6 <Timer_Init+0x36>
+ 7ec:	89 b7       	in	r24, 0x39	; 57
+ 7ee:	8e 7f       	andi	r24, 0xFE	; 254
+ 7f0:	89 bf       	out	0x39, r24	; 57
+ 7f2:	80 e0       	ldi	r24, 0x00	; 0
+ 7f4:	01 c0       	rjmp	.+2      	; 0x7f8 <Timer_Init+0x38>
+ 7f6:	84 e0       	ldi	r24, 0x04	; 4
+ 7f8:	93 b7       	in	r25, 0x33	; 51
+ 7fa:	98 60       	ori	r25, 0x08	; 8
+ 7fc:	93 bf       	out	0x33, r25	; 51
+ 7fe:	90 91 d8 00 	lds	r25, 0x00D8	; 0x8000d8 <gau8Timer_PSC>
+ 802:	91 30       	cpi	r25, 0x01	; 1
+ 804:	69 f4       	brne	.+26     	; 0x820 <Timer_Init+0x60>
+ 806:	4d e7       	ldi	r20, 0x7D	; 125
+ 808:	50 e0       	ldi	r21, 0x00	; 0
+ 80a:	60 e0       	ldi	r22, 0x00	; 0
+ 80c:	70 e0       	ldi	r23, 0x00	; 0
+ 80e:	40 93 cc 00 	sts	0x00CC, r20	; 0x8000cc <gau32Tick_time>
+ 812:	50 93 cd 00 	sts	0x00CD, r21	; 0x8000cd <gau32Tick_time+0x1>
+ 816:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <gau32Tick_time+0x2>
+ 81a:	70 93 cf 00 	sts	0x00CF, r23	; 0x8000cf <gau32Tick_time+0x3>
+ 81e:	2c c1       	rjmp	.+600    	; 0xa78 <__stack+0x219>
+ 820:	92 30       	cpi	r25, 0x02	; 2
+ 822:	69 f4       	brne	.+26     	; 0x83e <Timer_Init+0x7e>
+ 824:	48 ee       	ldi	r20, 0xE8	; 232
+ 826:	53 e0       	ldi	r21, 0x03	; 3
+ 828:	60 e0       	ldi	r22, 0x00	; 0
+ 82a:	70 e0       	ldi	r23, 0x00	; 0
+ 82c:	40 93 cc 00 	sts	0x00CC, r20	; 0x8000cc <gau32Tick_time>
+ 830:	50 93 cd 00 	sts	0x00CD, r21	; 0x8000cd <gau32Tick_time+0x1>
+ 834:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <gau32Tick_time+0x2>
+ 838:	70 93 cf 00 	sts	0x00CF, r23	; 0x8000cf <gau32Tick_time+0x3>
+ 83c:	1d c1       	rjmp	.+570    	; 0xa78 <__stack+0x219>
+ 83e:	93 30       	cpi	r25, 0x03	; 3
+ 840:	69 f4       	brne	.+26     	; 0x85c <Timer_Init+0x9c>
+ 842:	40 e4       	ldi	r20, 0x40	; 64
+ 844:	5f e1       	ldi	r21, 0x1F	; 31
+ 846:	60 e0       	ldi	r22, 0x00	; 0
+ 848:	70 e0       	ldi	r23, 0x00	; 0
+ 84a:	40 93 cc 00 	sts	0x00CC, r20	; 0x8000cc <gau32Tick_time>
+ 84e:	50 93 cd 00 	sts	0x00CD, r21	; 0x8000cd <gau32Tick_time+0x1>
+ 852:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <gau32Tick_time+0x2>
+ 856:	70 93 cf 00 	sts	0x00CF, r23	; 0x8000cf <gau32Tick_time+0x3>
+ 85a:	0e c1       	rjmp	.+540    	; 0xa78 <__stack+0x219>
+ 85c:	94 30       	cpi	r25, 0x04	; 4
+ 85e:	69 f4       	brne	.+26     	; 0x87a <__stack+0x1b>
+ 860:	40 e0       	ldi	r20, 0x00	; 0
+ 862:	5d e7       	ldi	r21, 0x7D	; 125
+ 864:	60 e0       	ldi	r22, 0x00	; 0
+ 866:	70 e0       	ldi	r23, 0x00	; 0
+ 868:	40 93 cc 00 	sts	0x00CC, r20	; 0x8000cc <gau32Tick_time>
+ 86c:	50 93 cd 00 	sts	0x00CD, r21	; 0x8000cd <gau32Tick_time+0x1>
+ 870:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <gau32Tick_time+0x2>
+ 874:	70 93 cf 00 	sts	0x00CF, r23	; 0x8000cf <gau32Tick_time+0x3>
+ 878:	ff c0       	rjmp	.+510    	; 0xa78 <__stack+0x219>
+ 87a:	95 30       	cpi	r25, 0x05	; 5
+ 87c:	09 f0       	breq	.+2      	; 0x880 <__stack+0x21>
+ 87e:	04 c1       	rjmp	.+520    	; 0xa88 <__stack+0x229>
+ 880:	40 e0       	ldi	r20, 0x00	; 0
+ 882:	54 ef       	ldi	r21, 0xF4	; 244
+ 884:	61 e0       	ldi	r22, 0x01	; 1
+ 886:	70 e0       	ldi	r23, 0x00	; 0
+ 888:	40 93 cc 00 	sts	0x00CC, r20	; 0x8000cc <gau32Tick_time>
+ 88c:	50 93 cd 00 	sts	0x00CD, r21	; 0x8000cd <gau32Tick_time+0x1>
+ 890:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <gau32Tick_time+0x2>
+ 894:	70 93 cf 00 	sts	0x00CF, r23	; 0x8000cf <gau32Tick_time+0x3>
+ 898:	ef c0       	rjmp	.+478    	; 0xa78 <__stack+0x219>
+ 89a:	81 30       	cpi	r24, 0x01	; 1
+ 89c:	09 f0       	breq	.+2      	; 0x8a0 <__stack+0x41>
+ 89e:	6a c0       	rjmp	.+212    	; 0x974 <__stack+0x115>
+ 8a0:	81 81       	ldd	r24, Z+1	; 0x01
+ 8a2:	80 93 d9 00 	sts	0x00D9, r24	; 0x8000d9 <gau8Timer_PSC+0x1>
+ 8a6:	83 81       	ldd	r24, Z+3	; 0x03
+ 8a8:	81 11       	cpse	r24, r1
+ 8aa:	0b c0       	rjmp	.+22     	; 0x8c2 <__stack+0x63>
+ 8ac:	8f ef       	ldi	r24, 0xFF	; 255
+ 8ae:	9f ef       	ldi	r25, 0xFF	; 255
+ 8b0:	9b bd       	out	0x2b, r25	; 43
+ 8b2:	8a bd       	out	0x2a, r24	; 42
+ 8b4:	0e 94 dc 03 	call	0x7b8	; 0x7b8 <Enable_GlobalInterrupt>
+ 8b8:	89 b7       	in	r24, 0x39	; 57
+ 8ba:	80 61       	ori	r24, 0x10	; 16
+ 8bc:	89 bf       	out	0x39, r24	; 57
+ 8be:	80 e0       	ldi	r24, 0x00	; 0
+ 8c0:	08 c0       	rjmp	.+16     	; 0x8d2 <__stack+0x73>
+ 8c2:	81 30       	cpi	r24, 0x01	; 1
+ 8c4:	29 f4       	brne	.+10     	; 0x8d0 <__stack+0x71>
+ 8c6:	89 b7       	in	r24, 0x39	; 57
+ 8c8:	8f 7e       	andi	r24, 0xEF	; 239
+ 8ca:	89 bf       	out	0x39, r24	; 57
+ 8cc:	80 e0       	ldi	r24, 0x00	; 0
+ 8ce:	01 c0       	rjmp	.+2      	; 0x8d2 <__stack+0x73>
+ 8d0:	84 e0       	ldi	r24, 0x04	; 4
+ 8d2:	9e b5       	in	r25, 0x2e	; 46
+ 8d4:	98 60       	ori	r25, 0x08	; 8
+ 8d6:	9e bd       	out	0x2e, r25	; 46
+ 8d8:	90 91 d9 00 	lds	r25, 0x00D9	; 0x8000d9 <gau8Timer_PSC+0x1>
+ 8dc:	91 30       	cpi	r25, 0x01	; 1
+ 8de:	69 f4       	brne	.+26     	; 0x8fa <__stack+0x9b>
+ 8e0:	4d e7       	ldi	r20, 0x7D	; 125
+ 8e2:	50 e0       	ldi	r21, 0x00	; 0
+ 8e4:	60 e0       	ldi	r22, 0x00	; 0
+ 8e6:	70 e0       	ldi	r23, 0x00	; 0
+ 8e8:	40 93 d0 00 	sts	0x00D0, r20	; 0x8000d0 <gau32Tick_time+0x4>
+ 8ec:	50 93 d1 00 	sts	0x00D1, r21	; 0x8000d1 <gau32Tick_time+0x5>
+ 8f0:	60 93 d2 00 	sts	0x00D2, r22	; 0x8000d2 <gau32Tick_time+0x6>
+ 8f4:	70 93 d3 00 	sts	0x00D3, r23	; 0x8000d3 <gau32Tick_time+0x7>
+ 8f8:	bf c0       	rjmp	.+382    	; 0xa78 <__stack+0x219>
+ 8fa:	92 30       	cpi	r25, 0x02	; 2
+ 8fc:	69 f4       	brne	.+26     	; 0x918 <__stack+0xb9>
+ 8fe:	48 ee       	ldi	r20, 0xE8	; 232
+ 900:	53 e0       	ldi	r21, 0x03	; 3
+ 902:	60 e0       	ldi	r22, 0x00	; 0
+ 904:	70 e0       	ldi	r23, 0x00	; 0
+ 906:	40 93 d0 00 	sts	0x00D0, r20	; 0x8000d0 <gau32Tick_time+0x4>
+ 90a:	50 93 d1 00 	sts	0x00D1, r21	; 0x8000d1 <gau32Tick_time+0x5>
+ 90e:	60 93 d2 00 	sts	0x00D2, r22	; 0x8000d2 <gau32Tick_time+0x6>
+ 912:	70 93 d3 00 	sts	0x00D3, r23	; 0x8000d3 <gau32Tick_time+0x7>
+ 916:	b0 c0       	rjmp	.+352    	; 0xa78 <__stack+0x219>
+ 918:	93 30       	cpi	r25, 0x03	; 3
+ 91a:	69 f4       	brne	.+26     	; 0x936 <__stack+0xd7>
+ 91c:	40 e4       	ldi	r20, 0x40	; 64
+ 91e:	5f e1       	ldi	r21, 0x1F	; 31
+ 920:	60 e0       	ldi	r22, 0x00	; 0
+ 922:	70 e0       	ldi	r23, 0x00	; 0
+ 924:	40 93 d0 00 	sts	0x00D0, r20	; 0x8000d0 <gau32Tick_time+0x4>
+ 928:	50 93 d1 00 	sts	0x00D1, r21	; 0x8000d1 <gau32Tick_time+0x5>
+ 92c:	60 93 d2 00 	sts	0x00D2, r22	; 0x8000d2 <gau32Tick_time+0x6>
+ 930:	70 93 d3 00 	sts	0x00D3, r23	; 0x8000d3 <gau32Tick_time+0x7>
+ 934:	a1 c0       	rjmp	.+322    	; 0xa78 <__stack+0x219>
+ 936:	94 30       	cpi	r25, 0x04	; 4
+ 938:	69 f4       	brne	.+26     	; 0x954 <__stack+0xf5>
+ 93a:	40 e0       	ldi	r20, 0x00	; 0
+ 93c:	5d e7       	ldi	r21, 0x7D	; 125
+ 93e:	60 e0       	ldi	r22, 0x00	; 0
+ 940:	70 e0       	ldi	r23, 0x00	; 0
+ 942:	40 93 d0 00 	sts	0x00D0, r20	; 0x8000d0 <gau32Tick_time+0x4>
+ 946:	50 93 d1 00 	sts	0x00D1, r21	; 0x8000d1 <gau32Tick_time+0x5>
+ 94a:	60 93 d2 00 	sts	0x00D2, r22	; 0x8000d2 <gau32Tick_time+0x6>
+ 94e:	70 93 d3 00 	sts	0x00D3, r23	; 0x8000d3 <gau32Tick_time+0x7>
+ 952:	92 c0       	rjmp	.+292    	; 0xa78 <__stack+0x219>
+ 954:	95 30       	cpi	r25, 0x05	; 5
+ 956:	09 f0       	breq	.+2      	; 0x95a <__stack+0xfb>
+ 958:	99 c0       	rjmp	.+306    	; 0xa8c <__stack+0x22d>
+ 95a:	40 e0       	ldi	r20, 0x00	; 0
+ 95c:	54 ef       	ldi	r21, 0xF4	; 244
+ 95e:	61 e0       	ldi	r22, 0x01	; 1
+ 960:	70 e0       	ldi	r23, 0x00	; 0
+ 962:	40 93 d0 00 	sts	0x00D0, r20	; 0x8000d0 <gau32Tick_time+0x4>
+ 966:	50 93 d1 00 	sts	0x00D1, r21	; 0x8000d1 <gau32Tick_time+0x5>
+ 96a:	60 93 d2 00 	sts	0x00D2, r22	; 0x8000d2 <gau32Tick_time+0x6>
+ 96e:	70 93 d3 00 	sts	0x00D3, r23	; 0x8000d3 <gau32Tick_time+0x7>
+ 972:	82 c0       	rjmp	.+260    	; 0xa78 <__stack+0x219>
+ 974:	82 30       	cpi	r24, 0x02	; 2
+ 976:	09 f0       	breq	.+2      	; 0x97a <__stack+0x11b>
+ 978:	8b c0       	rjmp	.+278    	; 0xa90 <__stack+0x231>
+ 97a:	81 81       	ldd	r24, Z+1	; 0x01
+ 97c:	80 93 da 00 	sts	0x00DA, r24	; 0x8000da <gau8Timer_PSC+0x2>
+ 980:	83 81       	ldd	r24, Z+3	; 0x03
+ 982:	81 11       	cpse	r24, r1
+ 984:	07 c0       	rjmp	.+14     	; 0x994 <__stack+0x135>
+ 986:	0e 94 dc 03 	call	0x7b8	; 0x7b8 <Enable_GlobalInterrupt>
+ 98a:	89 b7       	in	r24, 0x39	; 57
+ 98c:	80 64       	ori	r24, 0x40	; 64
+ 98e:	89 bf       	out	0x39, r24	; 57
+ 990:	80 e0       	ldi	r24, 0x00	; 0
+ 992:	08 c0       	rjmp	.+16     	; 0x9a4 <__stack+0x145>
+ 994:	81 30       	cpi	r24, 0x01	; 1
+ 996:	29 f4       	brne	.+10     	; 0x9a2 <__stack+0x143>
+ 998:	89 b7       	in	r24, 0x39	; 57
+ 99a:	8f 7b       	andi	r24, 0xBF	; 191
+ 99c:	89 bf       	out	0x39, r24	; 57
+ 99e:	80 e0       	ldi	r24, 0x00	; 0
+ 9a0:	01 c0       	rjmp	.+2      	; 0x9a4 <__stack+0x145>
+ 9a2:	84 e0       	ldi	r24, 0x04	; 4
+ 9a4:	90 91 da 00 	lds	r25, 0x00DA	; 0x8000da <gau8Timer_PSC+0x2>
+ 9a8:	91 30       	cpi	r25, 0x01	; 1
+ 9aa:	69 f4       	brne	.+26     	; 0x9c6 <__stack+0x167>
+ 9ac:	4d e7       	ldi	r20, 0x7D	; 125
+ 9ae:	50 e0       	ldi	r21, 0x00	; 0
+ 9b0:	60 e0       	ldi	r22, 0x00	; 0
+ 9b2:	70 e0       	ldi	r23, 0x00	; 0
+ 9b4:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ 9b8:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ 9bc:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ 9c0:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ 9c4:	59 c0       	rjmp	.+178    	; 0xa78 <__stack+0x219>
+ 9c6:	92 30       	cpi	r25, 0x02	; 2
+ 9c8:	69 f4       	brne	.+26     	; 0x9e4 <__stack+0x185>
+ 9ca:	48 ee       	ldi	r20, 0xE8	; 232
+ 9cc:	53 e0       	ldi	r21, 0x03	; 3
+ 9ce:	60 e0       	ldi	r22, 0x00	; 0
+ 9d0:	70 e0       	ldi	r23, 0x00	; 0
+ 9d2:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ 9d6:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ 9da:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ 9de:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ 9e2:	4a c0       	rjmp	.+148    	; 0xa78 <__stack+0x219>
+ 9e4:	93 30       	cpi	r25, 0x03	; 3
+ 9e6:	69 f4       	brne	.+26     	; 0xa02 <__stack+0x1a3>
+ 9e8:	40 ea       	ldi	r20, 0xA0	; 160
+ 9ea:	5f e0       	ldi	r21, 0x0F	; 15
+ 9ec:	60 e0       	ldi	r22, 0x00	; 0
+ 9ee:	70 e0       	ldi	r23, 0x00	; 0
+ 9f0:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ 9f4:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ 9f8:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ 9fc:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ a00:	3b c0       	rjmp	.+118    	; 0xa78 <__stack+0x219>
+ a02:	94 30       	cpi	r25, 0x04	; 4
+ a04:	69 f4       	brne	.+26     	; 0xa20 <__stack+0x1c1>
+ a06:	40 e4       	ldi	r20, 0x40	; 64
+ a08:	5f e1       	ldi	r21, 0x1F	; 31
+ a0a:	60 e0       	ldi	r22, 0x00	; 0
+ a0c:	70 e0       	ldi	r23, 0x00	; 0
+ a0e:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ a12:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ a16:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ a1a:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ a1e:	2c c0       	rjmp	.+88     	; 0xa78 <__stack+0x219>
+ a20:	95 30       	cpi	r25, 0x05	; 5
+ a22:	69 f4       	brne	.+26     	; 0xa3e <__stack+0x1df>
+ a24:	40 e8       	ldi	r20, 0x80	; 128
+ a26:	5e e3       	ldi	r21, 0x3E	; 62
+ a28:	60 e0       	ldi	r22, 0x00	; 0
+ a2a:	70 e0       	ldi	r23, 0x00	; 0
+ a2c:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ a30:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ a34:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ a38:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ a3c:	1d c0       	rjmp	.+58     	; 0xa78 <__stack+0x219>
+ a3e:	96 30       	cpi	r25, 0x06	; 6
+ a40:	69 f4       	brne	.+26     	; 0xa5c <__stack+0x1fd>
+ a42:	40 e0       	ldi	r20, 0x00	; 0
+ a44:	5d e7       	ldi	r21, 0x7D	; 125
+ a46:	60 e0       	ldi	r22, 0x00	; 0
+ a48:	70 e0       	ldi	r23, 0x00	; 0
+ a4a:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ a4e:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ a52:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ a56:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ a5a:	0e c0       	rjmp	.+28     	; 0xa78 <__stack+0x219>
+ a5c:	97 30       	cpi	r25, 0x07	; 7
+ a5e:	d1 f4       	brne	.+52     	; 0xa94 <__stack+0x235>
+ a60:	40 e0       	ldi	r20, 0x00	; 0
+ a62:	54 ef       	ldi	r21, 0xF4	; 244
+ a64:	61 e0       	ldi	r22, 0x01	; 1
+ a66:	70 e0       	ldi	r23, 0x00	; 0
+ a68:	40 93 d4 00 	sts	0x00D4, r20	; 0x8000d4 <gau32Tick_time+0x8>
+ a6c:	50 93 d5 00 	sts	0x00D5, r21	; 0x8000d5 <gau32Tick_time+0x9>
+ a70:	60 93 d6 00 	sts	0x00D6, r22	; 0x8000d6 <gau32Tick_time+0xa>
+ a74:	70 93 d7 00 	sts	0x00D7, r23	; 0x8000d7 <gau32Tick_time+0xb>
+ a78:	81 11       	cpse	r24, r1
+ a7a:	0d c0       	rjmp	.+26     	; 0xa96 <__stack+0x237>
+ a7c:	97 e0       	ldi	r25, 0x07	; 7
+ a7e:	90 93 69 00 	sts	0x0069, r25	; 0x800069 <gu8Is_timer_init>
+ a82:	08 95       	ret
+ a84:	81 e0       	ldi	r24, 0x01	; 1
+ a86:	08 95       	ret
+ a88:	83 e0       	ldi	r24, 0x03	; 3
+ a8a:	08 95       	ret
+ a8c:	83 e0       	ldi	r24, 0x03	; 3
+ a8e:	08 95       	ret
+ a90:	82 e0       	ldi	r24, 0x02	; 2
+ a92:	08 95       	ret
+ a94:	83 e0       	ldi	r24, 0x03	; 3
+ a96:	08 95       	ret
+
+00000a98 <Timer_Start>:
+ a98:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <gu8Is_timer_init>
+ a9c:	97 30       	cpi	r25, 0x07	; 7
+ a9e:	09 f0       	breq	.+2      	; 0xaa2 <Timer_Start+0xa>
+ aa0:	48 c1       	rjmp	.+656    	; 0xd32 <Timer_Start+0x29a>
+ aa2:	81 11       	cpse	r24, r1
+ aa4:	6a c0       	rjmp	.+212    	; 0xb7a <Timer_Start+0xe2>
+ aa6:	6f 3f       	cpi	r22, 0xFF	; 255
+ aa8:	71 05       	cpc	r23, r1
+ aaa:	11 f0       	breq	.+4      	; 0xab0 <Timer_Start+0x18>
+ aac:	08 f0       	brcs	.+2      	; 0xab0 <Timer_Start+0x18>
+ aae:	43 c1       	rjmp	.+646    	; 0xd36 <Timer_Start+0x29e>
+ ab0:	80 91 d8 00 	lds	r24, 0x00D8	; 0x8000d8 <gau8Timer_PSC>
+ ab4:	81 11       	cpse	r24, r1
+ ab6:	0a c0       	rjmp	.+20     	; 0xacc <Timer_Start+0x34>
+ ab8:	83 b7       	in	r24, 0x33	; 51
+ aba:	8e 7f       	andi	r24, 0xFE	; 254
+ abc:	83 bf       	out	0x33, r24	; 51
+ abe:	83 b7       	in	r24, 0x33	; 51
+ ac0:	8d 7f       	andi	r24, 0xFD	; 253
+ ac2:	83 bf       	out	0x33, r24	; 51
+ ac4:	83 b7       	in	r24, 0x33	; 51
+ ac6:	8b 7f       	andi	r24, 0xFB	; 251
+ ac8:	83 bf       	out	0x33, r24	; 51
+ aca:	53 c0       	rjmp	.+166    	; 0xb72 <Timer_Start+0xda>
+ acc:	81 30       	cpi	r24, 0x01	; 1
+ ace:	51 f4       	brne	.+20     	; 0xae4 <Timer_Start+0x4c>
+ ad0:	83 b7       	in	r24, 0x33	; 51
+ ad2:	81 60       	ori	r24, 0x01	; 1
+ ad4:	83 bf       	out	0x33, r24	; 51
+ ad6:	83 b7       	in	r24, 0x33	; 51
+ ad8:	8d 7f       	andi	r24, 0xFD	; 253
+ ada:	83 bf       	out	0x33, r24	; 51
+ adc:	83 b7       	in	r24, 0x33	; 51
+ ade:	8b 7f       	andi	r24, 0xFB	; 251
+ ae0:	83 bf       	out	0x33, r24	; 51
+ ae2:	47 c0       	rjmp	.+142    	; 0xb72 <Timer_Start+0xda>
+ ae4:	82 30       	cpi	r24, 0x02	; 2
+ ae6:	51 f4       	brne	.+20     	; 0xafc <Timer_Start+0x64>
+ ae8:	83 b7       	in	r24, 0x33	; 51
+ aea:	8e 7f       	andi	r24, 0xFE	; 254
+ aec:	83 bf       	out	0x33, r24	; 51
+ aee:	83 b7       	in	r24, 0x33	; 51
+ af0:	82 60       	ori	r24, 0x02	; 2
+ af2:	83 bf       	out	0x33, r24	; 51
+ af4:	83 b7       	in	r24, 0x33	; 51
+ af6:	8b 7f       	andi	r24, 0xFB	; 251
+ af8:	83 bf       	out	0x33, r24	; 51
+ afa:	3b c0       	rjmp	.+118    	; 0xb72 <Timer_Start+0xda>
+ afc:	83 30       	cpi	r24, 0x03	; 3
+ afe:	51 f4       	brne	.+20     	; 0xb14 <Timer_Start+0x7c>
+ b00:	83 b7       	in	r24, 0x33	; 51
+ b02:	81 60       	ori	r24, 0x01	; 1
+ b04:	83 bf       	out	0x33, r24	; 51
+ b06:	83 b7       	in	r24, 0x33	; 51
+ b08:	82 60       	ori	r24, 0x02	; 2
+ b0a:	83 bf       	out	0x33, r24	; 51
+ b0c:	83 b7       	in	r24, 0x33	; 51
+ b0e:	8b 7f       	andi	r24, 0xFB	; 251
+ b10:	83 bf       	out	0x33, r24	; 51
+ b12:	2f c0       	rjmp	.+94     	; 0xb72 <Timer_Start+0xda>
+ b14:	84 30       	cpi	r24, 0x04	; 4
+ b16:	51 f4       	brne	.+20     	; 0xb2c <Timer_Start+0x94>
+ b18:	83 b7       	in	r24, 0x33	; 51
+ b1a:	8e 7f       	andi	r24, 0xFE	; 254
+ b1c:	83 bf       	out	0x33, r24	; 51
+ b1e:	83 b7       	in	r24, 0x33	; 51
+ b20:	8d 7f       	andi	r24, 0xFD	; 253
+ b22:	83 bf       	out	0x33, r24	; 51
+ b24:	83 b7       	in	r24, 0x33	; 51
+ b26:	84 60       	ori	r24, 0x04	; 4
+ b28:	83 bf       	out	0x33, r24	; 51
+ b2a:	23 c0       	rjmp	.+70     	; 0xb72 <Timer_Start+0xda>
+ b2c:	85 30       	cpi	r24, 0x05	; 5
+ b2e:	51 f4       	brne	.+20     	; 0xb44 <Timer_Start+0xac>
+ b30:	83 b7       	in	r24, 0x33	; 51
+ b32:	81 60       	ori	r24, 0x01	; 1
+ b34:	83 bf       	out	0x33, r24	; 51
+ b36:	83 b7       	in	r24, 0x33	; 51
+ b38:	8d 7f       	andi	r24, 0xFD	; 253
+ b3a:	83 bf       	out	0x33, r24	; 51
+ b3c:	83 b7       	in	r24, 0x33	; 51
+ b3e:	84 60       	ori	r24, 0x04	; 4
+ b40:	83 bf       	out	0x33, r24	; 51
+ b42:	17 c0       	rjmp	.+46     	; 0xb72 <Timer_Start+0xda>
+ b44:	86 30       	cpi	r24, 0x06	; 6
+ b46:	51 f4       	brne	.+20     	; 0xb5c <Timer_Start+0xc4>
+ b48:	83 b7       	in	r24, 0x33	; 51
+ b4a:	8e 7f       	andi	r24, 0xFE	; 254
+ b4c:	83 bf       	out	0x33, r24	; 51
+ b4e:	83 b7       	in	r24, 0x33	; 51
+ b50:	82 60       	ori	r24, 0x02	; 2
+ b52:	83 bf       	out	0x33, r24	; 51
+ b54:	83 b7       	in	r24, 0x33	; 51
+ b56:	84 60       	ori	r24, 0x04	; 4
+ b58:	83 bf       	out	0x33, r24	; 51
+ b5a:	0b c0       	rjmp	.+22     	; 0xb72 <Timer_Start+0xda>
+ b5c:	87 30       	cpi	r24, 0x07	; 7
+ b5e:	49 f4       	brne	.+18     	; 0xb72 <Timer_Start+0xda>
+ b60:	83 b7       	in	r24, 0x33	; 51
+ b62:	81 60       	ori	r24, 0x01	; 1
+ b64:	83 bf       	out	0x33, r24	; 51
+ b66:	83 b7       	in	r24, 0x33	; 51
+ b68:	82 60       	ori	r24, 0x02	; 2
+ b6a:	83 bf       	out	0x33, r24	; 51
+ b6c:	83 b7       	in	r24, 0x33	; 51
+ b6e:	84 60       	ori	r24, 0x04	; 4
+ b70:	83 bf       	out	0x33, r24	; 51
+ b72:	60 95       	com	r22
+ b74:	62 bf       	out	0x32, r22	; 50
+ b76:	80 e0       	ldi	r24, 0x00	; 0
+ b78:	08 95       	ret
+ b7a:	81 30       	cpi	r24, 0x01	; 1
+ b7c:	09 f0       	breq	.+2      	; 0xb80 <Timer_Start+0xe8>
+ b7e:	6c c0       	rjmp	.+216    	; 0xc58 <Timer_Start+0x1c0>
+ b80:	1d bc       	out	0x2d, r1	; 45
+ b82:	1c bc       	out	0x2c, r1	; 44
+ b84:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <gu8Is_timer_init>
+ b88:	87 30       	cpi	r24, 0x07	; 7
+ b8a:	09 f0       	breq	.+2      	; 0xb8e <Timer_Start+0xf6>
+ b8c:	61 c0       	rjmp	.+194    	; 0xc50 <Timer_Start+0x1b8>
+ b8e:	80 91 d9 00 	lds	r24, 0x00D9	; 0x8000d9 <gau8Timer_PSC+0x1>
+ b92:	81 11       	cpse	r24, r1
+ b94:	0a c0       	rjmp	.+20     	; 0xbaa <Timer_Start+0x112>
+ b96:	8e b5       	in	r24, 0x2e	; 46
+ b98:	8e 7f       	andi	r24, 0xFE	; 254
+ b9a:	8e bd       	out	0x2e, r24	; 46
+ b9c:	8e b5       	in	r24, 0x2e	; 46
+ b9e:	8d 7f       	andi	r24, 0xFD	; 253
+ ba0:	8e bd       	out	0x2e, r24	; 46
+ ba2:	8e b5       	in	r24, 0x2e	; 46
+ ba4:	8b 7f       	andi	r24, 0xFB	; 251
+ ba6:	8e bd       	out	0x2e, r24	; 46
+ ba8:	53 c0       	rjmp	.+166    	; 0xc50 <Timer_Start+0x1b8>
+ baa:	81 30       	cpi	r24, 0x01	; 1
+ bac:	51 f4       	brne	.+20     	; 0xbc2 <Timer_Start+0x12a>
+ bae:	8e b5       	in	r24, 0x2e	; 46
+ bb0:	81 60       	ori	r24, 0x01	; 1
+ bb2:	8e bd       	out	0x2e, r24	; 46
+ bb4:	8e b5       	in	r24, 0x2e	; 46
+ bb6:	8d 7f       	andi	r24, 0xFD	; 253
+ bb8:	8e bd       	out	0x2e, r24	; 46
+ bba:	8e b5       	in	r24, 0x2e	; 46
+ bbc:	8b 7f       	andi	r24, 0xFB	; 251
+ bbe:	8e bd       	out	0x2e, r24	; 46
+ bc0:	47 c0       	rjmp	.+142    	; 0xc50 <Timer_Start+0x1b8>
+ bc2:	82 30       	cpi	r24, 0x02	; 2
+ bc4:	51 f4       	brne	.+20     	; 0xbda <Timer_Start+0x142>
+ bc6:	8e b5       	in	r24, 0x2e	; 46
+ bc8:	8e 7f       	andi	r24, 0xFE	; 254
+ bca:	8e bd       	out	0x2e, r24	; 46
+ bcc:	8e b5       	in	r24, 0x2e	; 46
+ bce:	82 60       	ori	r24, 0x02	; 2
+ bd0:	8e bd       	out	0x2e, r24	; 46
+ bd2:	8e b5       	in	r24, 0x2e	; 46
+ bd4:	8b 7f       	andi	r24, 0xFB	; 251
+ bd6:	8e bd       	out	0x2e, r24	; 46
+ bd8:	3b c0       	rjmp	.+118    	; 0xc50 <Timer_Start+0x1b8>
+ bda:	83 30       	cpi	r24, 0x03	; 3
+ bdc:	51 f4       	brne	.+20     	; 0xbf2 <Timer_Start+0x15a>
+ bde:	8e b5       	in	r24, 0x2e	; 46
+ be0:	81 60       	ori	r24, 0x01	; 1
+ be2:	8e bd       	out	0x2e, r24	; 46
+ be4:	8e b5       	in	r24, 0x2e	; 46
+ be6:	82 60       	ori	r24, 0x02	; 2
+ be8:	8e bd       	out	0x2e, r24	; 46
+ bea:	8e b5       	in	r24, 0x2e	; 46
+ bec:	8b 7f       	andi	r24, 0xFB	; 251
+ bee:	8e bd       	out	0x2e, r24	; 46
+ bf0:	2f c0       	rjmp	.+94     	; 0xc50 <Timer_Start+0x1b8>
+ bf2:	84 30       	cpi	r24, 0x04	; 4
+ bf4:	51 f4       	brne	.+20     	; 0xc0a <Timer_Start+0x172>
+ bf6:	8e b5       	in	r24, 0x2e	; 46
+ bf8:	8e 7f       	andi	r24, 0xFE	; 254
+ bfa:	8e bd       	out	0x2e, r24	; 46
+ bfc:	8e b5       	in	r24, 0x2e	; 46
+ bfe:	8d 7f       	andi	r24, 0xFD	; 253
+ c00:	8e bd       	out	0x2e, r24	; 46
+ c02:	8e b5       	in	r24, 0x2e	; 46
+ c04:	84 60       	ori	r24, 0x04	; 4
+ c06:	8e bd       	out	0x2e, r24	; 46
+ c08:	23 c0       	rjmp	.+70     	; 0xc50 <Timer_Start+0x1b8>
+ c0a:	85 30       	cpi	r24, 0x05	; 5
+ c0c:	51 f4       	brne	.+20     	; 0xc22 <Timer_Start+0x18a>
+ c0e:	8e b5       	in	r24, 0x2e	; 46
+ c10:	81 60       	ori	r24, 0x01	; 1
+ c12:	8e bd       	out	0x2e, r24	; 46
+ c14:	8e b5       	in	r24, 0x2e	; 46
+ c16:	8d 7f       	andi	r24, 0xFD	; 253
+ c18:	8e bd       	out	0x2e, r24	; 46
+ c1a:	8e b5       	in	r24, 0x2e	; 46
+ c1c:	84 60       	ori	r24, 0x04	; 4
+ c1e:	8e bd       	out	0x2e, r24	; 46
+ c20:	17 c0       	rjmp	.+46     	; 0xc50 <Timer_Start+0x1b8>
+ c22:	86 30       	cpi	r24, 0x06	; 6
+ c24:	51 f4       	brne	.+20     	; 0xc3a <Timer_Start+0x1a2>
+ c26:	8e b5       	in	r24, 0x2e	; 46
+ c28:	8e 7f       	andi	r24, 0xFE	; 254
+ c2a:	8e bd       	out	0x2e, r24	; 46
+ c2c:	8e b5       	in	r24, 0x2e	; 46
+ c2e:	82 60       	ori	r24, 0x02	; 2
+ c30:	8e bd       	out	0x2e, r24	; 46
+ c32:	8e b5       	in	r24, 0x2e	; 46
+ c34:	84 60       	ori	r24, 0x04	; 4
+ c36:	8e bd       	out	0x2e, r24	; 46
+ c38:	0b c0       	rjmp	.+22     	; 0xc50 <Timer_Start+0x1b8>
+ c3a:	87 30       	cpi	r24, 0x07	; 7
+ c3c:	49 f4       	brne	.+18     	; 0xc50 <Timer_Start+0x1b8>
+ c3e:	8e b5       	in	r24, 0x2e	; 46
+ c40:	81 60       	ori	r24, 0x01	; 1
+ c42:	8e bd       	out	0x2e, r24	; 46
+ c44:	8e b5       	in	r24, 0x2e	; 46
+ c46:	82 60       	ori	r24, 0x02	; 2
+ c48:	8e bd       	out	0x2e, r24	; 46
+ c4a:	8e b5       	in	r24, 0x2e	; 46
+ c4c:	84 60       	ori	r24, 0x04	; 4
+ c4e:	8e bd       	out	0x2e, r24	; 46
+ c50:	7b bd       	out	0x2b, r23	; 43
+ c52:	6a bd       	out	0x2a, r22	; 42
+ c54:	80 e0       	ldi	r24, 0x00	; 0
+ c56:	08 95       	ret
+ c58:	82 30       	cpi	r24, 0x02	; 2
+ c5a:	09 f0       	breq	.+2      	; 0xc5e <Timer_Start+0x1c6>
+ c5c:	6e c0       	rjmp	.+220    	; 0xd3a <Timer_Start+0x2a2>
+ c5e:	6f 3f       	cpi	r22, 0xFF	; 255
+ c60:	71 05       	cpc	r23, r1
+ c62:	11 f0       	breq	.+4      	; 0xc68 <Timer_Start+0x1d0>
+ c64:	08 f0       	brcs	.+2      	; 0xc68 <Timer_Start+0x1d0>
+ c66:	6b c0       	rjmp	.+214    	; 0xd3e <Timer_Start+0x2a6>
+ c68:	80 91 da 00 	lds	r24, 0x00DA	; 0x8000da <gau8Timer_PSC+0x2>
+ c6c:	81 11       	cpse	r24, r1
+ c6e:	0a c0       	rjmp	.+20     	; 0xc84 <Timer_Start+0x1ec>
+ c70:	85 b5       	in	r24, 0x25	; 37
+ c72:	8e 7f       	andi	r24, 0xFE	; 254
+ c74:	85 bd       	out	0x25, r24	; 37
+ c76:	85 b5       	in	r24, 0x25	; 37
+ c78:	8d 7f       	andi	r24, 0xFD	; 253
+ c7a:	85 bd       	out	0x25, r24	; 37
+ c7c:	85 b5       	in	r24, 0x25	; 37
+ c7e:	8b 7f       	andi	r24, 0xFB	; 251
+ c80:	85 bd       	out	0x25, r24	; 37
+ c82:	53 c0       	rjmp	.+166    	; 0xd2a <Timer_Start+0x292>
+ c84:	81 30       	cpi	r24, 0x01	; 1
+ c86:	51 f4       	brne	.+20     	; 0xc9c <Timer_Start+0x204>
+ c88:	85 b5       	in	r24, 0x25	; 37
+ c8a:	81 60       	ori	r24, 0x01	; 1
+ c8c:	85 bd       	out	0x25, r24	; 37
+ c8e:	85 b5       	in	r24, 0x25	; 37
+ c90:	8d 7f       	andi	r24, 0xFD	; 253
+ c92:	85 bd       	out	0x25, r24	; 37
+ c94:	85 b5       	in	r24, 0x25	; 37
+ c96:	8b 7f       	andi	r24, 0xFB	; 251
+ c98:	85 bd       	out	0x25, r24	; 37
+ c9a:	47 c0       	rjmp	.+142    	; 0xd2a <Timer_Start+0x292>
+ c9c:	82 30       	cpi	r24, 0x02	; 2
+ c9e:	51 f4       	brne	.+20     	; 0xcb4 <Timer_Start+0x21c>
+ ca0:	85 b5       	in	r24, 0x25	; 37
+ ca2:	8e 7f       	andi	r24, 0xFE	; 254
+ ca4:	85 bd       	out	0x25, r24	; 37
+ ca6:	85 b5       	in	r24, 0x25	; 37
+ ca8:	82 60       	ori	r24, 0x02	; 2
+ caa:	85 bd       	out	0x25, r24	; 37
+ cac:	85 b5       	in	r24, 0x25	; 37
+ cae:	8b 7f       	andi	r24, 0xFB	; 251
+ cb0:	85 bd       	out	0x25, r24	; 37
+ cb2:	3b c0       	rjmp	.+118    	; 0xd2a <Timer_Start+0x292>
+ cb4:	83 30       	cpi	r24, 0x03	; 3
+ cb6:	51 f4       	brne	.+20     	; 0xccc <Timer_Start+0x234>
+ cb8:	85 b5       	in	r24, 0x25	; 37
+ cba:	81 60       	ori	r24, 0x01	; 1
+ cbc:	85 bd       	out	0x25, r24	; 37
+ cbe:	85 b5       	in	r24, 0x25	; 37
+ cc0:	82 60       	ori	r24, 0x02	; 2
+ cc2:	85 bd       	out	0x25, r24	; 37
+ cc4:	85 b5       	in	r24, 0x25	; 37
+ cc6:	8b 7f       	andi	r24, 0xFB	; 251
+ cc8:	85 bd       	out	0x25, r24	; 37
+ cca:	2f c0       	rjmp	.+94     	; 0xd2a <Timer_Start+0x292>
+ ccc:	84 30       	cpi	r24, 0x04	; 4
+ cce:	51 f4       	brne	.+20     	; 0xce4 <Timer_Start+0x24c>
+ cd0:	85 b5       	in	r24, 0x25	; 37
+ cd2:	8e 7f       	andi	r24, 0xFE	; 254
+ cd4:	85 bd       	out	0x25, r24	; 37
+ cd6:	85 b5       	in	r24, 0x25	; 37
+ cd8:	8d 7f       	andi	r24, 0xFD	; 253
+ cda:	85 bd       	out	0x25, r24	; 37
+ cdc:	85 b5       	in	r24, 0x25	; 37
+ cde:	84 60       	ori	r24, 0x04	; 4
+ ce0:	85 bd       	out	0x25, r24	; 37
+ ce2:	23 c0       	rjmp	.+70     	; 0xd2a <Timer_Start+0x292>
+ ce4:	85 30       	cpi	r24, 0x05	; 5
+ ce6:	51 f4       	brne	.+20     	; 0xcfc <Timer_Start+0x264>
+ ce8:	85 b5       	in	r24, 0x25	; 37
+ cea:	81 60       	ori	r24, 0x01	; 1
+ cec:	85 bd       	out	0x25, r24	; 37
+ cee:	85 b5       	in	r24, 0x25	; 37
+ cf0:	8d 7f       	andi	r24, 0xFD	; 253
+ cf2:	85 bd       	out	0x25, r24	; 37
+ cf4:	85 b5       	in	r24, 0x25	; 37
+ cf6:	84 60       	ori	r24, 0x04	; 4
+ cf8:	85 bd       	out	0x25, r24	; 37
+ cfa:	17 c0       	rjmp	.+46     	; 0xd2a <Timer_Start+0x292>
+ cfc:	86 30       	cpi	r24, 0x06	; 6
+ cfe:	51 f4       	brne	.+20     	; 0xd14 <Timer_Start+0x27c>
+ d00:	85 b5       	in	r24, 0x25	; 37
+ d02:	8e 7f       	andi	r24, 0xFE	; 254
+ d04:	85 bd       	out	0x25, r24	; 37
+ d06:	85 b5       	in	r24, 0x25	; 37
+ d08:	82 60       	ori	r24, 0x02	; 2
+ d0a:	85 bd       	out	0x25, r24	; 37
+ d0c:	85 b5       	in	r24, 0x25	; 37
+ d0e:	84 60       	ori	r24, 0x04	; 4
+ d10:	85 bd       	out	0x25, r24	; 37
+ d12:	0b c0       	rjmp	.+22     	; 0xd2a <Timer_Start+0x292>
+ d14:	87 30       	cpi	r24, 0x07	; 7
+ d16:	49 f4       	brne	.+18     	; 0xd2a <Timer_Start+0x292>
+ d18:	85 b5       	in	r24, 0x25	; 37
+ d1a:	81 60       	ori	r24, 0x01	; 1
+ d1c:	85 bd       	out	0x25, r24	; 37
+ d1e:	85 b5       	in	r24, 0x25	; 37
+ d20:	82 60       	ori	r24, 0x02	; 2
+ d22:	85 bd       	out	0x25, r24	; 37
+ d24:	85 b5       	in	r24, 0x25	; 37
+ d26:	84 60       	ori	r24, 0x04	; 4
+ d28:	85 bd       	out	0x25, r24	; 37
+ d2a:	60 95       	com	r22
+ d2c:	64 bd       	out	0x24, r22	; 36
+ d2e:	80 e0       	ldi	r24, 0x00	; 0
+ d30:	08 95       	ret
+ d32:	86 e0       	ldi	r24, 0x06	; 6
+ d34:	08 95       	ret
+ d36:	85 e0       	ldi	r24, 0x05	; 5
+ d38:	08 95       	ret
+ d3a:	82 e0       	ldi	r24, 0x02	; 2
+ d3c:	08 95       	ret
+ d3e:	85 e0       	ldi	r24, 0x05	; 5
+ d40:	08 95       	ret
+
+00000d42 <Timer_Get_Tick_Time>:
+ d42:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <gu8Is_timer_init>
+ d46:	97 30       	cpi	r25, 0x07	; 7
+ d48:	b1 f5       	brne	.+108    	; 0xdb6 <Timer_Get_Tick_Time+0x74>
+ d4a:	61 15       	cp	r22, r1
+ d4c:	71 05       	cpc	r23, r1
+ d4e:	a9 f1       	breq	.+106    	; 0xdba <Timer_Get_Tick_Time+0x78>
+ d50:	81 11       	cpse	r24, r1
+ d52:	0f c0       	rjmp	.+30     	; 0xd72 <Timer_Get_Tick_Time+0x30>
+ d54:	80 91 cc 00 	lds	r24, 0x00CC	; 0x8000cc <gau32Tick_time>
+ d58:	90 91 cd 00 	lds	r25, 0x00CD	; 0x8000cd <gau32Tick_time+0x1>
+ d5c:	a0 91 ce 00 	lds	r26, 0x00CE	; 0x8000ce <gau32Tick_time+0x2>
+ d60:	b0 91 cf 00 	lds	r27, 0x00CF	; 0x8000cf <gau32Tick_time+0x3>
+ d64:	fb 01       	movw	r30, r22
+ d66:	80 83       	st	Z, r24
+ d68:	91 83       	std	Z+1, r25	; 0x01
+ d6a:	a2 83       	std	Z+2, r26	; 0x02
+ d6c:	b3 83       	std	Z+3, r27	; 0x03
+ d6e:	80 e0       	ldi	r24, 0x00	; 0
+ d70:	08 95       	ret
+ d72:	81 30       	cpi	r24, 0x01	; 1
+ d74:	79 f4       	brne	.+30     	; 0xd94 <Timer_Get_Tick_Time+0x52>
+ d76:	80 91 d0 00 	lds	r24, 0x00D0	; 0x8000d0 <gau32Tick_time+0x4>
+ d7a:	90 91 d1 00 	lds	r25, 0x00D1	; 0x8000d1 <gau32Tick_time+0x5>
+ d7e:	a0 91 d2 00 	lds	r26, 0x00D2	; 0x8000d2 <gau32Tick_time+0x6>
+ d82:	b0 91 d3 00 	lds	r27, 0x00D3	; 0x8000d3 <gau32Tick_time+0x7>
+ d86:	fb 01       	movw	r30, r22
+ d88:	80 83       	st	Z, r24
+ d8a:	91 83       	std	Z+1, r25	; 0x01
+ d8c:	a2 83       	std	Z+2, r26	; 0x02
+ d8e:	b3 83       	std	Z+3, r27	; 0x03
+ d90:	80 e0       	ldi	r24, 0x00	; 0
+ d92:	08 95       	ret
+ d94:	82 30       	cpi	r24, 0x02	; 2
+ d96:	99 f4       	brne	.+38     	; 0xdbe <Timer_Get_Tick_Time+0x7c>
+ d98:	80 91 d4 00 	lds	r24, 0x00D4	; 0x8000d4 <gau32Tick_time+0x8>
+ d9c:	90 91 d5 00 	lds	r25, 0x00D5	; 0x8000d5 <gau32Tick_time+0x9>
+ da0:	a0 91 d6 00 	lds	r26, 0x00D6	; 0x8000d6 <gau32Tick_time+0xa>
+ da4:	b0 91 d7 00 	lds	r27, 0x00D7	; 0x8000d7 <gau32Tick_time+0xb>
+ da8:	fb 01       	movw	r30, r22
+ daa:	80 83       	st	Z, r24
+ dac:	91 83       	std	Z+1, r25	; 0x01
+ dae:	a2 83       	std	Z+2, r26	; 0x02
+ db0:	b3 83       	std	Z+3, r27	; 0x03
+ db2:	80 e0       	ldi	r24, 0x00	; 0
+ db4:	08 95       	ret
+ db6:	86 e0       	ldi	r24, 0x06	; 6
+ db8:	08 95       	ret
+ dba:	81 e0       	ldi	r24, 0x01	; 1
+ dbc:	08 95       	ret
+ dbe:	82 e0       	ldi	r24, 0x02	; 2
+ dc0:	08 95       	ret
+
+00000dc2 <__udivmodsi4>:
+ dc2:	a1 e2       	ldi	r26, 0x21	; 33
+ dc4:	1a 2e       	mov	r1, r26
+ dc6:	aa 1b       	sub	r26, r26
+ dc8:	bb 1b       	sub	r27, r27
+ dca:	fd 01       	movw	r30, r26
+ dcc:	0d c0       	rjmp	.+26     	; 0xde8 <__udivmodsi4_ep>
+
+00000dce <__udivmodsi4_loop>:
+ dce:	aa 1f       	adc	r26, r26
+ dd0:	bb 1f       	adc	r27, r27
+ dd2:	ee 1f       	adc	r30, r30
+ dd4:	ff 1f       	adc	r31, r31
+ dd6:	a2 17       	cp	r26, r18
+ dd8:	b3 07       	cpc	r27, r19
+ dda:	e4 07       	cpc	r30, r20
+ ddc:	f5 07       	cpc	r31, r21
+ dde:	20 f0       	brcs	.+8      	; 0xde8 <__udivmodsi4_ep>
+ de0:	a2 1b       	sub	r26, r18
+ de2:	b3 0b       	sbc	r27, r19
+ de4:	e4 0b       	sbc	r30, r20
+ de6:	f5 0b       	sbc	r31, r21
+
+00000de8 <__udivmodsi4_ep>:
+ de8:	66 1f       	adc	r22, r22
+ dea:	77 1f       	adc	r23, r23
+ dec:	88 1f       	adc	r24, r24
+ dee:	99 1f       	adc	r25, r25
+ df0:	1a 94       	dec	r1
+ df2:	69 f7       	brne	.-38     	; 0xdce <__udivmodsi4_loop>
+ df4:	60 95       	com	r22
+ df6:	70 95       	com	r23
+ df8:	80 95       	com	r24
+ dfa:	90 95       	com	r25
+ dfc:	9b 01       	movw	r18, r22
+ dfe:	ac 01       	movw	r20, r24
+ e00:	bd 01       	movw	r22, r26
+ e02:	cf 01       	movw	r24, r30
+ e04:	08 95       	ret
+
+00000e06 <_exit>:
+ e06:	f8 94       	cli
+
+00000e08 <__stop_program>:
+ e08:	ff cf       	rjmp	.-2      	; 0xe08 <__stop_program>
