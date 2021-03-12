@@ -1,0 +1,1594 @@
+
+BCM_Module.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007f0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  000007f0  00000884  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000017  0080006a  0080006a  0000088e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000088e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008c0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000e8  00000000  00000000  000008fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000f9b  00000000  00000000  000009e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000094a  00000000  00000000  0000197f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000a42  00000000  00000000  000022c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001f8  00000000  00000000  00002d0c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000679  00000000  00000000  00002f04  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000009ec  00000000  00000000  0000357d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a8  00000000  00000000  00003f69  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 1d 03 	jmp	0x63a	; 0x63a <__vector_13>
+  38:	0c 94 e3 02 	jmp	0x5c6	; 0x5c6 <__vector_14>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 ef       	ldi	r30, 0xF0	; 240
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 36       	cpi	r26, 0x6A	; 106
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa e6       	ldi	r26, 0x6A	; 106
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a1 38       	cpi	r26, 0x81	; 129
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 9e 02 	call	0x53c	; 0x53c <main>
+  8a:	0c 94 f6 03 	jmp	0x7ec	; 0x7ec <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <BCM_Init>:
+		uint8_t LOCKED_S ;
+	} BCM_CONFIG_BUFFER;
+BCM_CONFIG_BUFFER BCM_CNFG_BUFF ;
+/******************Writing BCM_INIT*********************************/
+BCM_ERROR BCM_Init(strBCM_Cfg* BCM_Config)
+{	
+  92:	ff 92       	push	r15
+  94:	0f 93       	push	r16
+  96:	1f 93       	push	r17
+  98:	cf 93       	push	r28
+  9a:	df 93       	push	r29
+  9c:	cd b7       	in	r28, 0x3d	; 61
+  9e:	de b7       	in	r29, 0x3e	; 62
+  a0:	29 97       	sbiw	r28, 0x09	; 9
+  a2:	0f b6       	in	r0, 0x3f	; 63
+  a4:	f8 94       	cli
+  a6:	de bf       	out	0x3e, r29	; 62
+  a8:	0f be       	out	0x3f, r0	; 63
+  aa:	cd bf       	out	0x3d, r28	; 61
+  ac:	8c 01       	movw	r16, r24
+	if(BCM_CNFG_BUFF.LOCKED_S == LOCKED)
+  ae:	90 91 7e 00 	lds	r25, 0x007E	; 0x80007e <BCM_CNFG_BUFF+0x8>
+  b2:	91 30       	cpi	r25, 0x01	; 1
+  b4:	b1 f1       	breq	.+108    	; 0x122 <BCM_Init+0x90>
+	{
+		return ERROR_NOK ;
+	}
+	/************Initializing the UART ********************/
+	strUART_Config CFG_STRUCT_1 ;
+	CFG_STRUCT_1.u16_BaudRate = BCM_Config->BaudRate ;
+  b6:	d8 01       	movw	r26, r16
+  b8:	8d 91       	ld	r24, X+
+  ba:	9c 91       	ld	r25, X
+  bc:	9b 83       	std	Y+3, r25	; 0x03
+  be:	8a 83       	std	Y+2, r24	; 0x02
+	CFG_STRUCT_1.u8_DataBits = DATA_BITS ;
+  c0:	88 e0       	ldi	r24, 0x08	; 8
+  c2:	8d 83       	std	Y+5, r24	; 0x05
+	CFG_STRUCT_1.u8_Duplex = FULL_DUPLEX ;
+  c4:	19 86       	std	Y+9, r1	; 0x09
+	CFG_STRUCT_1.u8_Interrupt = INTERRUPT_MODE ;
+  c6:	18 86       	std	Y+8, r1	; 0x08
+	CFG_STRUCT_1.u8_Parity = PARITY_DISABLED ;
+  c8:	1e 82       	std	Y+6, r1	; 0x06
+	CFG_STRUCT_1.u8_SpeedMode = DOUBLE_SPEED ;
+  ca:	ff 24       	eor	r15, r15
+  cc:	f3 94       	inc	r15
+  ce:	f9 82       	std	Y+1, r15	; 0x01
+	CFG_STRUCT_1.u8_StopBits = ONE_STOP ;
+  d0:	1f 82       	std	Y+7, r1	; 0x07
+	CFG_STRUCT_1.u8_Sync = ASYNCHRONOUS ;
+  d2:	fc 82       	std	Y+4, r15	; 0x04
+	strUART_Config *CFG_STRUCT_2 = &CFG_STRUCT_1 ;
+	UART_init(CFG_STRUCT_2) ;
+  d4:	ce 01       	movw	r24, r28
+  d6:	01 96       	adiw	r24, 0x01	; 1
+  d8:	0e 94 4a 03 	call	0x694	; 0x694 <UART_init>
+	/***********Copying the Data Address and the ID *******/
+	BCM_CNFG_BUFF.Address = BCM_Config->Address ;
+  dc:	f8 01       	movw	r30, r16
+  de:	86 81       	ldd	r24, Z+6	; 0x06
+  e0:	97 81       	ldd	r25, Z+7	; 0x07
+  e2:	a0 85       	ldd	r26, Z+8	; 0x08
+  e4:	b1 85       	ldd	r27, Z+9	; 0x09
+  e6:	e6 e7       	ldi	r30, 0x76	; 118
+  e8:	f0 e0       	ldi	r31, 0x00	; 0
+  ea:	83 83       	std	Z+3, r24	; 0x03
+  ec:	94 83       	std	Z+4, r25	; 0x04
+  ee:	a5 83       	std	Z+5, r26	; 0x05
+  f0:	b6 83       	std	Z+6, r27	; 0x06
+	BCM_CNFG_BUFF.Data_length = BCM_Config->Data_length ;
+  f2:	d8 01       	movw	r26, r16
+  f4:	14 96       	adiw	r26, 0x04	; 4
+  f6:	8d 91       	ld	r24, X+
+  f8:	9c 91       	ld	r25, X
+  fa:	15 97       	sbiw	r26, 0x05	; 5
+  fc:	92 83       	std	Z+2, r25	; 0x02
+  fe:	81 83       	std	Z+1, r24	; 0x01
+	/******************************************************/	
+	BCM_CNFG_BUFF.ID = BCM_Config->ID ;
+ 100:	1a 96       	adiw	r26, 0x0a	; 10
+ 102:	2c 91       	ld	r18, X
+ 104:	20 83       	st	Z, r18
+	BCM_CNFG_BUFF.LOCKED_S = LOCKED ;
+ 106:	f0 86       	std	Z+8, r15	; 0x08
+	Data_Length_BCM = BCM_CNFG_BUFF.Data_length + FRAME_SIZE ;
+ 108:	03 96       	adiw	r24, 0x03	; 3
+ 10a:	a0 e0       	ldi	r26, 0x00	; 0
+ 10c:	b0 e0       	ldi	r27, 0x00	; 0
+ 10e:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <Data_Length_BCM>
+ 112:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <Data_Length_BCM+0x1>
+ 116:	a0 93 74 00 	sts	0x0074, r26	; 0x800074 <Data_Length_BCM+0x2>
+ 11a:	b0 93 75 00 	sts	0x0075, r27	; 0x800075 <Data_Length_BCM+0x3>
+	return ERROR_OK;
+ 11e:	80 e0       	ldi	r24, 0x00	; 0
+ 120:	01 c0       	rjmp	.+2      	; 0x124 <BCM_Init+0x92>
+/******************Writing BCM_INIT*********************************/
+BCM_ERROR BCM_Init(strBCM_Cfg* BCM_Config)
+{	
+	if(BCM_CNFG_BUFF.LOCKED_S == LOCKED)
+	{
+		return ERROR_NOK ;
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+	/******************************************************/	
+	BCM_CNFG_BUFF.ID = BCM_Config->ID ;
+	BCM_CNFG_BUFF.LOCKED_S = LOCKED ;
+	Data_Length_BCM = BCM_CNFG_BUFF.Data_length + FRAME_SIZE ;
+	return ERROR_OK;
+}
+ 124:	29 96       	adiw	r28, 0x09	; 9
+ 126:	0f b6       	in	r0, 0x3f	; 63
+ 128:	f8 94       	cli
+ 12a:	de bf       	out	0x3e, r29	; 62
+ 12c:	0f be       	out	0x3f, r0	; 63
+ 12e:	cd bf       	out	0x3d, r28	; 61
+ 130:	df 91       	pop	r29
+ 132:	cf 91       	pop	r28
+ 134:	1f 91       	pop	r17
+ 136:	0f 91       	pop	r16
+ 138:	ff 90       	pop	r15
+ 13a:	08 95       	ret
+
+0000013c <BCM_DISPATCHER>:
+BCM_STATE BCM_DISPATCHER(void)
+{
+	BCM_STATE VAL;
+	char* Address_G;
+	char Data_Send;
+	switch(BCM_State)
+ 13c:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <BCM_State>
+ 140:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <BCM_State+0x1>
+ 144:	a0 91 70 00 	lds	r26, 0x0070	; 0x800070 <BCM_State+0x2>
+ 148:	b0 91 71 00 	lds	r27, 0x0071	; 0x800071 <BCM_State+0x3>
+ 14c:	82 30       	cpi	r24, 0x02	; 2
+ 14e:	91 05       	cpc	r25, r1
+ 150:	a1 05       	cpc	r26, r1
+ 152:	b1 05       	cpc	r27, r1
+ 154:	09 f4       	brne	.+2      	; 0x158 <BCM_DISPATCHER+0x1c>
+ 156:	43 c0       	rjmp	.+134    	; 0x1de <BCM_DISPATCHER+0xa2>
+ 158:	83 30       	cpi	r24, 0x03	; 3
+ 15a:	91 05       	cpc	r25, r1
+ 15c:	a1 05       	cpc	r26, r1
+ 15e:	b1 05       	cpc	r27, r1
+ 160:	09 f4       	brne	.+2      	; 0x164 <BCM_DISPATCHER+0x28>
+ 162:	74 c0       	rjmp	.+232    	; 0x24c <BCM_DISPATCHER+0x110>
+ 164:	01 97       	sbiw	r24, 0x01	; 1
+ 166:	a1 05       	cpc	r26, r1
+ 168:	b1 05       	cpc	r27, r1
+ 16a:	09 f0       	breq	.+2      	; 0x16e <BCM_DISPATCHER+0x32>
+ 16c:	8b c0       	rjmp	.+278    	; 0x284 <BCM_DISPATCHER+0x148>
+		case IDLE:
+		VAL = IDLE ; 
+		break;
+		case SENDING_BYTE:
+		/********Checking that the Frame Sent is Completed********/
+		if(i_count<FRAME_SIZE)
+ 16e:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 172:	90 91 6b 00 	lds	r25, 0x006B	; 0x80006b <__data_end+0x1>
+ 176:	a0 91 6c 00 	lds	r26, 0x006C	; 0x80006c <__data_end+0x2>
+ 17a:	b0 91 6d 00 	lds	r27, 0x006D	; 0x80006d <__data_end+0x3>
+ 17e:	83 30       	cpi	r24, 0x03	; 3
+ 180:	91 05       	cpc	r25, r1
+ 182:	a1 05       	cpc	r26, r1
+ 184:	b1 05       	cpc	r27, r1
+ 186:	68 f4       	brcc	.+26     	; 0x1a2 <BCM_DISPATCHER+0x66>
+		{
+			Address_G = &BCM_CNFG_BUFF ;
+			Data_Send = *(Address_G+i_count);
+ 188:	fc 01       	movw	r30, r24
+ 18a:	ea 58       	subi	r30, 0x8A	; 138
+ 18c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 18e:	80 81       	ld	r24, Z
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+ 190:	e6 e7       	ldi	r30, 0x76	; 118
+ 192:	f0 e0       	ldi	r31, 0x00	; 0
+ 194:	97 81       	ldd	r25, Z+7	; 0x07
+ 196:	98 0f       	add	r25, r24
+ 198:	97 83       	std	Z+7, r25	; 0x07
+			UART_sendByte(Data_Send);
+ 19a:	90 e0       	ldi	r25, 0x00	; 0
+ 19c:	0e 94 e8 03 	call	0x7d0	; 0x7d0 <UART_sendByte>
+ 1a0:	71 c0       	rjmp	.+226    	; 0x284 <BCM_DISPATCHER+0x148>
+		}
+		else if((i_count>=FRAME_SIZE)&&(i_count<Data_Length_BCM))
+ 1a2:	40 91 72 00 	lds	r20, 0x0072	; 0x800072 <Data_Length_BCM>
+ 1a6:	50 91 73 00 	lds	r21, 0x0073	; 0x800073 <Data_Length_BCM+0x1>
+ 1aa:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <Data_Length_BCM+0x2>
+ 1ae:	70 91 75 00 	lds	r23, 0x0075	; 0x800075 <Data_Length_BCM+0x3>
+ 1b2:	84 17       	cp	r24, r20
+ 1b4:	95 07       	cpc	r25, r21
+ 1b6:	a6 07       	cpc	r26, r22
+ 1b8:	b7 07       	cpc	r27, r23
+ 1ba:	08 f0       	brcs	.+2      	; 0x1be <BCM_DISPATCHER+0x82>
+ 1bc:	4a c0       	rjmp	.+148    	; 0x252 <BCM_DISPATCHER+0x116>
+		{
+			Address_G = BCM_CNFG_BUFF.Address ;
+ 1be:	e6 e7       	ldi	r30, 0x76	; 118
+ 1c0:	f0 e0       	ldi	r31, 0x00	; 0
+			Data_Send = *(Address_G+i_count-FRAME_SIZE);
+ 1c2:	23 81       	ldd	r18, Z+3	; 0x03
+ 1c4:	34 81       	ldd	r19, Z+4	; 0x04
+ 1c6:	82 0f       	add	r24, r18
+ 1c8:	93 1f       	adc	r25, r19
+ 1ca:	dc 01       	movw	r26, r24
+ 1cc:	13 97       	sbiw	r26, 0x03	; 3
+ 1ce:	8c 91       	ld	r24, X
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+ 1d0:	97 81       	ldd	r25, Z+7	; 0x07
+ 1d2:	98 0f       	add	r25, r24
+ 1d4:	97 83       	std	Z+7, r25	; 0x07
+			UART_sendByte(Data_Send);
+ 1d6:	90 e0       	ldi	r25, 0x00	; 0
+ 1d8:	0e 94 e8 03 	call	0x7d0	; 0x7d0 <UART_sendByte>
+ 1dc:	53 c0       	rjmp	.+166    	; 0x284 <BCM_DISPATCHER+0x148>
+		}
+		VAL = SENDING_BYTE ;
+		break ;
+		case SENDING_COMPLETE:
+		/********Checking that the Frame Sent is Completed********/
+		if(i_count<FRAME_SIZE)
+ 1de:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 1e2:	90 91 6b 00 	lds	r25, 0x006B	; 0x80006b <__data_end+0x1>
+ 1e6:	a0 91 6c 00 	lds	r26, 0x006C	; 0x80006c <__data_end+0x2>
+ 1ea:	b0 91 6d 00 	lds	r27, 0x006D	; 0x80006d <__data_end+0x3>
+ 1ee:	83 30       	cpi	r24, 0x03	; 3
+ 1f0:	91 05       	cpc	r25, r1
+ 1f2:	a1 05       	cpc	r26, r1
+ 1f4:	b1 05       	cpc	r27, r1
+ 1f6:	68 f4       	brcc	.+26     	; 0x212 <BCM_DISPATCHER+0xd6>
+		{
+			Address_G = &BCM_CNFG_BUFF ;
+			Data_Send = *(Address_G+i_count);
+ 1f8:	fc 01       	movw	r30, r24
+ 1fa:	ea 58       	subi	r30, 0x8A	; 138
+ 1fc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1fe:	80 81       	ld	r24, Z
+			//PORTB = Data_Send ;
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+ 200:	e6 e7       	ldi	r30, 0x76	; 118
+ 202:	f0 e0       	ldi	r31, 0x00	; 0
+ 204:	97 81       	ldd	r25, Z+7	; 0x07
+ 206:	98 0f       	add	r25, r24
+ 208:	97 83       	std	Z+7, r25	; 0x07
+			UART_sendByte(Data_Send);
+ 20a:	90 e0       	ldi	r25, 0x00	; 0
+ 20c:	0e 94 e8 03 	call	0x7d0	; 0x7d0 <UART_sendByte>
+ 210:	39 c0       	rjmp	.+114    	; 0x284 <BCM_DISPATCHER+0x148>
+		}
+		else if((i_count>=FRAME_SIZE)&&(i_count<Data_Length_BCM))
+ 212:	40 91 72 00 	lds	r20, 0x0072	; 0x800072 <Data_Length_BCM>
+ 216:	50 91 73 00 	lds	r21, 0x0073	; 0x800073 <Data_Length_BCM+0x1>
+ 21a:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <Data_Length_BCM+0x2>
+ 21e:	70 91 75 00 	lds	r23, 0x0075	; 0x800075 <Data_Length_BCM+0x3>
+ 222:	84 17       	cp	r24, r20
+ 224:	95 07       	cpc	r25, r21
+ 226:	a6 07       	cpc	r26, r22
+ 228:	b7 07       	cpc	r27, r23
+ 22a:	00 f5       	brcc	.+64     	; 0x26c <BCM_DISPATCHER+0x130>
+		{
+			Address_G = BCM_CNFG_BUFF.Address ;
+ 22c:	e6 e7       	ldi	r30, 0x76	; 118
+ 22e:	f0 e0       	ldi	r31, 0x00	; 0
+			Data_Send = *(Address_G+i_count-FRAME_SIZE);
+ 230:	23 81       	ldd	r18, Z+3	; 0x03
+ 232:	34 81       	ldd	r19, Z+4	; 0x04
+ 234:	82 0f       	add	r24, r18
+ 236:	93 1f       	adc	r25, r19
+ 238:	dc 01       	movw	r26, r24
+ 23a:	13 97       	sbiw	r26, 0x03	; 3
+ 23c:	8c 91       	ld	r24, X
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+ 23e:	97 81       	ldd	r25, Z+7	; 0x07
+ 240:	98 0f       	add	r25, r24
+ 242:	97 83       	std	Z+7, r25	; 0x07
+			UART_sendByte(Data_Send);
+ 244:	90 e0       	ldi	r25, 0x00	; 0
+ 246:	0e 94 e8 03 	call	0x7d0	; 0x7d0 <UART_sendByte>
+ 24a:	1c c0       	rjmp	.+56     	; 0x284 <BCM_DISPATCHER+0x148>
+			BCM_State = FRAME_COMPLETE ;
+		}
+		VAL = SENDING_COMPLETE ;
+		break;
+		case FRAME_COMPLETE:
+		BCM_CNFG_BUFF.LOCKED_S = UNLOCKED ; 
+ 24c:	10 92 7e 00 	sts	0x007E, r1	; 0x80007e <BCM_CNFG_BUFF+0x8>
+		VAL =  BCM_CNFG_BUFF.CHECK_SUM ;
+		break;
+ 250:	19 c0       	rjmp	.+50     	; 0x284 <BCM_DISPATCHER+0x148>
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+			UART_sendByte(Data_Send);
+		}
+		else if(i_count>=Data_Length_BCM)
+		{
+			BCM_State = FRAME_COMPLETE ;
+ 252:	83 e0       	ldi	r24, 0x03	; 3
+ 254:	90 e0       	ldi	r25, 0x00	; 0
+ 256:	a0 e0       	ldi	r26, 0x00	; 0
+ 258:	b0 e0       	ldi	r27, 0x00	; 0
+ 25a:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <BCM_State>
+ 25e:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <BCM_State+0x1>
+ 262:	a0 93 70 00 	sts	0x0070, r26	; 0x800070 <BCM_State+0x2>
+ 266:	b0 93 71 00 	sts	0x0071, r27	; 0x800071 <BCM_State+0x3>
+ 26a:	0c c0       	rjmp	.+24     	; 0x284 <BCM_DISPATCHER+0x148>
+			BCM_CNFG_BUFF.CHECK_SUM = BCM_CNFG_BUFF.CHECK_SUM + Data_Send ;
+			UART_sendByte(Data_Send);
+		}
+		else if(i_count>=Data_Length_BCM)
+		{
+			BCM_State = FRAME_COMPLETE ;
+ 26c:	83 e0       	ldi	r24, 0x03	; 3
+ 26e:	90 e0       	ldi	r25, 0x00	; 0
+ 270:	a0 e0       	ldi	r26, 0x00	; 0
+ 272:	b0 e0       	ldi	r27, 0x00	; 0
+ 274:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <BCM_State>
+ 278:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <BCM_State+0x1>
+ 27c:	a0 93 70 00 	sts	0x0070, r26	; 0x800070 <BCM_State+0x2>
+ 280:	b0 93 71 00 	sts	0x0071, r27	; 0x800071 <BCM_State+0x3>
+		break;
+		default:
+		break;
+	}
+	return ERROR_OK ;
+}
+ 284:	80 e0       	ldi	r24, 0x00	; 0
+ 286:	90 e0       	ldi	r25, 0x00	; 0
+ 288:	08 95       	ret
+
+0000028a <BCM_Send>:
+	//Data_Length_BCM = BCM_CNFG_BUFF.Data_length + FRAME_SIZE ; 
+	Address_Data = BCM_CNFG_BUFF.Address ;
+	char * Address_G = &BCM_CNFG_BUFF ; 
+	/************Constructing the Transmition Frame*************/
+	Data_Send = *(Address_G);
+	UART_sendByte(Data_Send);
+ 28a:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <BCM_CNFG_BUFF>
+ 28e:	90 e0       	ldi	r25, 0x00	; 0
+ 290:	0e 94 e8 03 	call	0x7d0	; 0x7d0 <UART_sendByte>
+	return ERROR_OK ;
+ 294:	80 e0       	ldi	r24, 0x00	; 0
+ 296:	08 95       	ret
+
+00000298 <DIO_WRITE_PIN>:
+
+
+#include "dio.h"
+extern uint8_t DIO_WRITE_PIN (uint8_t u8Pin_Number,uint8_t u8Value )
+{
+	if(u8Pin_Number < MAX_PINS)
+ 298:	80 32       	cpi	r24, 0x20	; 32
+ 29a:	08 f0       	brcs	.+2      	; 0x29e <DIO_WRITE_PIN+0x6>
+ 29c:	9e c0       	rjmp	.+316    	; 0x3da <DIO_WRITE_PIN+0x142>
+		{
+		if (u8Value == HIGH)
+ 29e:	61 30       	cpi	r22, 0x01	; 1
+ 2a0:	09 f0       	breq	.+2      	; 0x2a4 <DIO_WRITE_PIN+0xc>
+ 2a2:	4b c0       	rjmp	.+150    	; 0x33a <DIO_WRITE_PIN+0xa2>
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 2a4:	88 30       	cpi	r24, 0x08	; 8
+ 2a6:	78 f4       	brcc	.+30     	; 0x2c6 <DIO_WRITE_PIN+0x2e>
+ 2a8:	4b b3       	in	r20, 0x1b	; 27
+ 2aa:	87 70       	andi	r24, 0x07	; 7
+ 2ac:	21 e0       	ldi	r18, 0x01	; 1
+ 2ae:	30 e0       	ldi	r19, 0x00	; 0
+ 2b0:	b9 01       	movw	r22, r18
+ 2b2:	02 c0       	rjmp	.+4      	; 0x2b8 <DIO_WRITE_PIN+0x20>
+ 2b4:	66 0f       	add	r22, r22
+ 2b6:	77 1f       	adc	r23, r23
+ 2b8:	8a 95       	dec	r24
+ 2ba:	e2 f7       	brpl	.-8      	; 0x2b4 <DIO_WRITE_PIN+0x1c>
+ 2bc:	cb 01       	movw	r24, r22
+ 2be:	84 2b       	or	r24, r20
+ 2c0:	8b bb       	out	0x1b, r24	; 27
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 2c2:	80 e0       	ldi	r24, 0x00	; 0
+ 2c4:	08 95       	ret
+	if(u8Pin_Number < MAX_PINS)
+		{
+		if (u8Value == HIGH)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 2c6:	98 ef       	ldi	r25, 0xF8	; 248
+ 2c8:	98 0f       	add	r25, r24
+ 2ca:	98 30       	cpi	r25, 0x08	; 8
+ 2cc:	78 f4       	brcc	.+30     	; 0x2ec <DIO_WRITE_PIN+0x54>
+ 2ce:	48 b3       	in	r20, 0x18	; 24
+ 2d0:	87 70       	andi	r24, 0x07	; 7
+ 2d2:	21 e0       	ldi	r18, 0x01	; 1
+ 2d4:	30 e0       	ldi	r19, 0x00	; 0
+ 2d6:	b9 01       	movw	r22, r18
+ 2d8:	02 c0       	rjmp	.+4      	; 0x2de <DIO_WRITE_PIN+0x46>
+ 2da:	66 0f       	add	r22, r22
+ 2dc:	77 1f       	adc	r23, r23
+ 2de:	8a 95       	dec	r24
+ 2e0:	e2 f7       	brpl	.-8      	; 0x2da <DIO_WRITE_PIN+0x42>
+ 2e2:	cb 01       	movw	r24, r22
+ 2e4:	84 2b       	or	r24, r20
+ 2e6:	88 bb       	out	0x18, r24	; 24
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 2e8:	80 e0       	ldi	r24, 0x00	; 0
+ 2ea:	08 95       	ret
+		{
+		if (u8Value == HIGH)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 2ec:	90 ef       	ldi	r25, 0xF0	; 240
+ 2ee:	98 0f       	add	r25, r24
+ 2f0:	98 30       	cpi	r25, 0x08	; 8
+ 2f2:	78 f4       	brcc	.+30     	; 0x312 <DIO_WRITE_PIN+0x7a>
+ 2f4:	45 b3       	in	r20, 0x15	; 21
+ 2f6:	87 70       	andi	r24, 0x07	; 7
+ 2f8:	21 e0       	ldi	r18, 0x01	; 1
+ 2fa:	30 e0       	ldi	r19, 0x00	; 0
+ 2fc:	b9 01       	movw	r22, r18
+ 2fe:	02 c0       	rjmp	.+4      	; 0x304 <DIO_WRITE_PIN+0x6c>
+ 300:	66 0f       	add	r22, r22
+ 302:	77 1f       	adc	r23, r23
+ 304:	8a 95       	dec	r24
+ 306:	e2 f7       	brpl	.-8      	; 0x300 <DIO_WRITE_PIN+0x68>
+ 308:	cb 01       	movw	r24, r22
+ 30a:	84 2b       	or	r24, r20
+ 30c:	85 bb       	out	0x15, r24	; 21
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 30e:	80 e0       	ldi	r24, 0x00	; 0
+ 310:	08 95       	ret
+		if (u8Value == HIGH)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   PORTD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 312:	98 ee       	ldi	r25, 0xE8	; 232
+ 314:	98 0f       	add	r25, r24
+ 316:	98 30       	cpi	r25, 0x08	; 8
+ 318:	08 f0       	brcs	.+2      	; 0x31c <DIO_WRITE_PIN+0x84>
+ 31a:	61 c0       	rjmp	.+194    	; 0x3de <DIO_WRITE_PIN+0x146>
+ 31c:	42 b3       	in	r20, 0x12	; 18
+ 31e:	87 70       	andi	r24, 0x07	; 7
+ 320:	21 e0       	ldi	r18, 0x01	; 1
+ 322:	30 e0       	ldi	r19, 0x00	; 0
+ 324:	b9 01       	movw	r22, r18
+ 326:	02 c0       	rjmp	.+4      	; 0x32c <DIO_WRITE_PIN+0x94>
+ 328:	66 0f       	add	r22, r22
+ 32a:	77 1f       	adc	r23, r23
+ 32c:	8a 95       	dec	r24
+ 32e:	e2 f7       	brpl	.-8      	; 0x328 <DIO_WRITE_PIN+0x90>
+ 330:	cb 01       	movw	r24, r22
+ 332:	84 2b       	or	r24, r20
+ 334:	82 bb       	out	0x12, r24	; 18
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 336:	80 e0       	ldi	r24, 0x00	; 0
+ 338:	08 95       	ret
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   PORTD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else if (u8Value == LOW)
+ 33a:	61 11       	cpse	r22, r1
+ 33c:	52 c0       	rjmp	.+164    	; 0x3e2 <DIO_WRITE_PIN+0x14a>
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 33e:	88 30       	cpi	r24, 0x08	; 8
+ 340:	80 f4       	brcc	.+32     	; 0x362 <DIO_WRITE_PIN+0xca>
+ 342:	4b b3       	in	r20, 0x1b	; 27
+ 344:	87 70       	andi	r24, 0x07	; 7
+ 346:	21 e0       	ldi	r18, 0x01	; 1
+ 348:	30 e0       	ldi	r19, 0x00	; 0
+ 34a:	b9 01       	movw	r22, r18
+ 34c:	02 c0       	rjmp	.+4      	; 0x352 <DIO_WRITE_PIN+0xba>
+ 34e:	66 0f       	add	r22, r22
+ 350:	77 1f       	adc	r23, r23
+ 352:	8a 95       	dec	r24
+ 354:	e2 f7       	brpl	.-8      	; 0x34e <DIO_WRITE_PIN+0xb6>
+ 356:	cb 01       	movw	r24, r22
+ 358:	80 95       	com	r24
+ 35a:	84 23       	and	r24, r20
+ 35c:	8b bb       	out	0x1b, r24	; 27
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 35e:	80 e0       	ldi	r24, 0x00	; 0
+ 360:	08 95       	ret
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   PORTD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else if (u8Value == LOW)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 362:	98 ef       	ldi	r25, 0xF8	; 248
+ 364:	98 0f       	add	r25, r24
+ 366:	98 30       	cpi	r25, 0x08	; 8
+ 368:	80 f4       	brcc	.+32     	; 0x38a <DIO_WRITE_PIN+0xf2>
+ 36a:	48 b3       	in	r20, 0x18	; 24
+ 36c:	87 70       	andi	r24, 0x07	; 7
+ 36e:	21 e0       	ldi	r18, 0x01	; 1
+ 370:	30 e0       	ldi	r19, 0x00	; 0
+ 372:	b9 01       	movw	r22, r18
+ 374:	02 c0       	rjmp	.+4      	; 0x37a <DIO_WRITE_PIN+0xe2>
+ 376:	66 0f       	add	r22, r22
+ 378:	77 1f       	adc	r23, r23
+ 37a:	8a 95       	dec	r24
+ 37c:	e2 f7       	brpl	.-8      	; 0x376 <DIO_WRITE_PIN+0xde>
+ 37e:	cb 01       	movw	r24, r22
+ 380:	80 95       	com	r24
+ 382:	84 23       	and	r24, r20
+ 384:	88 bb       	out	0x18, r24	; 24
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 386:	80 e0       	ldi	r24, 0x00	; 0
+ 388:	08 95       	ret
+		}
+		else if (u8Value == LOW)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 38a:	90 ef       	ldi	r25, 0xF0	; 240
+ 38c:	98 0f       	add	r25, r24
+ 38e:	98 30       	cpi	r25, 0x08	; 8
+ 390:	80 f4       	brcc	.+32     	; 0x3b2 <DIO_WRITE_PIN+0x11a>
+ 392:	45 b3       	in	r20, 0x15	; 21
+ 394:	87 70       	andi	r24, 0x07	; 7
+ 396:	21 e0       	ldi	r18, 0x01	; 1
+ 398:	30 e0       	ldi	r19, 0x00	; 0
+ 39a:	b9 01       	movw	r22, r18
+ 39c:	02 c0       	rjmp	.+4      	; 0x3a2 <DIO_WRITE_PIN+0x10a>
+ 39e:	66 0f       	add	r22, r22
+ 3a0:	77 1f       	adc	r23, r23
+ 3a2:	8a 95       	dec	r24
+ 3a4:	e2 f7       	brpl	.-8      	; 0x39e <DIO_WRITE_PIN+0x106>
+ 3a6:	cb 01       	movw	r24, r22
+ 3a8:	80 95       	com	r24
+ 3aa:	84 23       	and	r24, r20
+ 3ac:	85 bb       	out	0x15, r24	; 21
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 3ae:	80 e0       	ldi	r24, 0x00	; 0
+ 3b0:	08 95       	ret
+		else if (u8Value == LOW)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     PORTA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    PORTB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   PORTD &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 3b2:	98 ee       	ldi	r25, 0xE8	; 232
+ 3b4:	98 0f       	add	r25, r24
+ 3b6:	98 30       	cpi	r25, 0x08	; 8
+ 3b8:	b0 f4       	brcc	.+44     	; 0x3e6 <DIO_WRITE_PIN+0x14e>
+ 3ba:	42 b3       	in	r20, 0x12	; 18
+ 3bc:	87 70       	andi	r24, 0x07	; 7
+ 3be:	21 e0       	ldi	r18, 0x01	; 1
+ 3c0:	30 e0       	ldi	r19, 0x00	; 0
+ 3c2:	b9 01       	movw	r22, r18
+ 3c4:	02 c0       	rjmp	.+4      	; 0x3ca <DIO_WRITE_PIN+0x132>
+ 3c6:	66 0f       	add	r22, r22
+ 3c8:	77 1f       	adc	r23, r23
+ 3ca:	8a 95       	dec	r24
+ 3cc:	e2 f7       	brpl	.-8      	; 0x3c6 <DIO_WRITE_PIN+0x12e>
+ 3ce:	cb 01       	movw	r24, r22
+ 3d0:	80 95       	com	r24
+ 3d2:	84 23       	and	r24, r20
+ 3d4:	82 bb       	out	0x12, r24	; 18
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 3d6:	80 e0       	ldi	r24, 0x00	; 0
+ 3d8:	08 95       	ret
+
+		}else
+		{
+			return ERROR_NOK;
+ 3da:	81 e0       	ldi	r24, 0x01	; 1
+ 3dc:	08 95       	ret
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 3de:	80 e0       	ldi	r24, 0x00	; 0
+ 3e0:	08 95       	ret
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   PORTC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   PORTD &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else
+		{
+			return ERROR_NOK;
+ 3e2:	81 e0       	ldi	r24, 0x01	; 1
+ 3e4:	08 95       	ret
+		}
+		return ERROR_OK;
+ 3e6:	80 e0       	ldi	r24, 0x00	; 0
+		}else
+		{
+			return ERROR_NOK;
+		}
+
+}
+ 3e8:	08 95       	ret
+
+000003ea <DIO_INIT_Pin>:
+extern uint8_t DIO_INIT_Pin (uint8_t u8Pin_Number,uint8_t u8State)
+{
+	if(u8Pin_Number < MAX_PINS)
+ 3ea:	80 32       	cpi	r24, 0x20	; 32
+ 3ec:	08 f0       	brcs	.+2      	; 0x3f0 <DIO_INIT_Pin+0x6>
+ 3ee:	9e c0       	rjmp	.+316    	; 0x52c <__LOCK_REGION_LENGTH__+0x12c>
+	{
+		if (u8State == OUTPUT)
+ 3f0:	61 30       	cpi	r22, 0x01	; 1
+ 3f2:	09 f0       	breq	.+2      	; 0x3f6 <DIO_INIT_Pin+0xc>
+ 3f4:	4b c0       	rjmp	.+150    	; 0x48c <__LOCK_REGION_LENGTH__+0x8c>
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 3f6:	88 30       	cpi	r24, 0x08	; 8
+ 3f8:	78 f4       	brcc	.+30     	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+ 3fa:	4a b3       	in	r20, 0x1a	; 26
+ 3fc:	87 70       	andi	r24, 0x07	; 7
+ 3fe:	21 e0       	ldi	r18, 0x01	; 1
+ 400:	30 e0       	ldi	r19, 0x00	; 0
+ 402:	b9 01       	movw	r22, r18
+ 404:	02 c0       	rjmp	.+4      	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+ 406:	66 0f       	add	r22, r22
+ 408:	77 1f       	adc	r23, r23
+ 40a:	8a 95       	dec	r24
+ 40c:	e2 f7       	brpl	.-8      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+ 40e:	cb 01       	movw	r24, r22
+ 410:	84 2b       	or	r24, r20
+ 412:	8a bb       	out	0x1a, r24	; 26
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 414:	80 e0       	ldi	r24, 0x00	; 0
+ 416:	08 95       	ret
+	if(u8Pin_Number < MAX_PINS)
+	{
+		if (u8State == OUTPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 418:	98 ef       	ldi	r25, 0xF8	; 248
+ 41a:	98 0f       	add	r25, r24
+ 41c:	98 30       	cpi	r25, 0x08	; 8
+ 41e:	78 f4       	brcc	.+30     	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+ 420:	47 b3       	in	r20, 0x17	; 23
+ 422:	87 70       	andi	r24, 0x07	; 7
+ 424:	21 e0       	ldi	r18, 0x01	; 1
+ 426:	30 e0       	ldi	r19, 0x00	; 0
+ 428:	b9 01       	movw	r22, r18
+ 42a:	02 c0       	rjmp	.+4      	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+ 42c:	66 0f       	add	r22, r22
+ 42e:	77 1f       	adc	r23, r23
+ 430:	8a 95       	dec	r24
+ 432:	e2 f7       	brpl	.-8      	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
+ 434:	cb 01       	movw	r24, r22
+ 436:	84 2b       	or	r24, r20
+ 438:	87 bb       	out	0x17, r24	; 23
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 43a:	80 e0       	ldi	r24, 0x00	; 0
+ 43c:	08 95       	ret
+	{
+		if (u8State == OUTPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 43e:	90 ef       	ldi	r25, 0xF0	; 240
+ 440:	98 0f       	add	r25, r24
+ 442:	98 30       	cpi	r25, 0x08	; 8
+ 444:	78 f4       	brcc	.+30     	; 0x464 <__LOCK_REGION_LENGTH__+0x64>
+ 446:	44 b3       	in	r20, 0x14	; 20
+ 448:	87 70       	andi	r24, 0x07	; 7
+ 44a:	21 e0       	ldi	r18, 0x01	; 1
+ 44c:	30 e0       	ldi	r19, 0x00	; 0
+ 44e:	b9 01       	movw	r22, r18
+ 450:	02 c0       	rjmp	.+4      	; 0x456 <__LOCK_REGION_LENGTH__+0x56>
+ 452:	66 0f       	add	r22, r22
+ 454:	77 1f       	adc	r23, r23
+ 456:	8a 95       	dec	r24
+ 458:	e2 f7       	brpl	.-8      	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 45a:	cb 01       	movw	r24, r22
+ 45c:	84 2b       	or	r24, r20
+ 45e:	84 bb       	out	0x14, r24	; 20
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 460:	80 e0       	ldi	r24, 0x00	; 0
+ 462:	08 95       	ret
+		if (u8State == OUTPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   DDRD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 464:	98 ee       	ldi	r25, 0xE8	; 232
+ 466:	98 0f       	add	r25, r24
+ 468:	98 30       	cpi	r25, 0x08	; 8
+ 46a:	08 f0       	brcs	.+2      	; 0x46e <__LOCK_REGION_LENGTH__+0x6e>
+ 46c:	61 c0       	rjmp	.+194    	; 0x530 <__LOCK_REGION_LENGTH__+0x130>
+ 46e:	41 b3       	in	r20, 0x11	; 17
+ 470:	87 70       	andi	r24, 0x07	; 7
+ 472:	21 e0       	ldi	r18, 0x01	; 1
+ 474:	30 e0       	ldi	r19, 0x00	; 0
+ 476:	b9 01       	movw	r22, r18
+ 478:	02 c0       	rjmp	.+4      	; 0x47e <__LOCK_REGION_LENGTH__+0x7e>
+ 47a:	66 0f       	add	r22, r22
+ 47c:	77 1f       	adc	r23, r23
+ 47e:	8a 95       	dec	r24
+ 480:	e2 f7       	brpl	.-8      	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+ 482:	cb 01       	movw	r24, r22
+ 484:	84 2b       	or	r24, r20
+ 486:	81 bb       	out	0x11, r24	; 17
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 488:	80 e0       	ldi	r24, 0x00	; 0
+ 48a:	08 95       	ret
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   DDRD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else if(u8State == INPUT)
+ 48c:	61 11       	cpse	r22, r1
+ 48e:	52 c0       	rjmp	.+164    	; 0x534 <__LOCK_REGION_LENGTH__+0x134>
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 490:	88 30       	cpi	r24, 0x08	; 8
+ 492:	80 f4       	brcc	.+32     	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+ 494:	4a b3       	in	r20, 0x1a	; 26
+ 496:	87 70       	andi	r24, 0x07	; 7
+ 498:	21 e0       	ldi	r18, 0x01	; 1
+ 49a:	30 e0       	ldi	r19, 0x00	; 0
+ 49c:	b9 01       	movw	r22, r18
+ 49e:	02 c0       	rjmp	.+4      	; 0x4a4 <__LOCK_REGION_LENGTH__+0xa4>
+ 4a0:	66 0f       	add	r22, r22
+ 4a2:	77 1f       	adc	r23, r23
+ 4a4:	8a 95       	dec	r24
+ 4a6:	e2 f7       	brpl	.-8      	; 0x4a0 <__LOCK_REGION_LENGTH__+0xa0>
+ 4a8:	cb 01       	movw	r24, r22
+ 4aa:	80 95       	com	r24
+ 4ac:	84 23       	and	r24, r20
+ 4ae:	8a bb       	out	0x1a, r24	; 26
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 4b0:	80 e0       	ldi	r24, 0x00	; 0
+ 4b2:	08 95       	ret
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   DDRD |=   (1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else if(u8State == INPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 4b4:	98 ef       	ldi	r25, 0xF8	; 248
+ 4b6:	98 0f       	add	r25, r24
+ 4b8:	98 30       	cpi	r25, 0x08	; 8
+ 4ba:	80 f4       	brcc	.+32     	; 0x4dc <__LOCK_REGION_LENGTH__+0xdc>
+ 4bc:	47 b3       	in	r20, 0x17	; 23
+ 4be:	87 70       	andi	r24, 0x07	; 7
+ 4c0:	21 e0       	ldi	r18, 0x01	; 1
+ 4c2:	30 e0       	ldi	r19, 0x00	; 0
+ 4c4:	b9 01       	movw	r22, r18
+ 4c6:	02 c0       	rjmp	.+4      	; 0x4cc <__LOCK_REGION_LENGTH__+0xcc>
+ 4c8:	66 0f       	add	r22, r22
+ 4ca:	77 1f       	adc	r23, r23
+ 4cc:	8a 95       	dec	r24
+ 4ce:	e2 f7       	brpl	.-8      	; 0x4c8 <__LOCK_REGION_LENGTH__+0xc8>
+ 4d0:	cb 01       	movw	r24, r22
+ 4d2:	80 95       	com	r24
+ 4d4:	84 23       	and	r24, r20
+ 4d6:	87 bb       	out	0x17, r24	; 23
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 4d8:	80 e0       	ldi	r24, 0x00	; 0
+ 4da:	08 95       	ret
+		}
+		else if(u8State == INPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 4dc:	90 ef       	ldi	r25, 0xF0	; 240
+ 4de:	98 0f       	add	r25, r24
+ 4e0:	98 30       	cpi	r25, 0x08	; 8
+ 4e2:	80 f4       	brcc	.+32     	; 0x504 <__LOCK_REGION_LENGTH__+0x104>
+ 4e4:	44 b3       	in	r20, 0x14	; 20
+ 4e6:	87 70       	andi	r24, 0x07	; 7
+ 4e8:	21 e0       	ldi	r18, 0x01	; 1
+ 4ea:	30 e0       	ldi	r19, 0x00	; 0
+ 4ec:	b9 01       	movw	r22, r18
+ 4ee:	02 c0       	rjmp	.+4      	; 0x4f4 <__LOCK_REGION_LENGTH__+0xf4>
+ 4f0:	66 0f       	add	r22, r22
+ 4f2:	77 1f       	adc	r23, r23
+ 4f4:	8a 95       	dec	r24
+ 4f6:	e2 f7       	brpl	.-8      	; 0x4f0 <__LOCK_REGION_LENGTH__+0xf0>
+ 4f8:	cb 01       	movw	r24, r22
+ 4fa:	80 95       	com	r24
+ 4fc:	84 23       	and	r24, r20
+ 4fe:	84 bb       	out	0x14, r24	; 20
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 500:	80 e0       	ldi	r24, 0x00	; 0
+ 502:	08 95       	ret
+		else if(u8State == INPUT)
+		{
+			if     (u8Pin_Number >= 0 && u8Pin_Number < 8)     DDRA &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 8 && u8Pin_Number < 16)    DDRB &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   DDRD &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+ 504:	98 ee       	ldi	r25, 0xE8	; 232
+ 506:	98 0f       	add	r25, r24
+ 508:	98 30       	cpi	r25, 0x08	; 8
+ 50a:	b0 f4       	brcc	.+44     	; 0x538 <__LOCK_REGION_LENGTH__+0x138>
+ 50c:	41 b3       	in	r20, 0x11	; 17
+ 50e:	87 70       	andi	r24, 0x07	; 7
+ 510:	21 e0       	ldi	r18, 0x01	; 1
+ 512:	30 e0       	ldi	r19, 0x00	; 0
+ 514:	b9 01       	movw	r22, r18
+ 516:	02 c0       	rjmp	.+4      	; 0x51c <__LOCK_REGION_LENGTH__+0x11c>
+ 518:	66 0f       	add	r22, r22
+ 51a:	77 1f       	adc	r23, r23
+ 51c:	8a 95       	dec	r24
+ 51e:	e2 f7       	brpl	.-8      	; 0x518 <__LOCK_REGION_LENGTH__+0x118>
+ 520:	cb 01       	movw	r24, r22
+ 522:	80 95       	com	r24
+ 524:	84 23       	and	r24, r20
+ 526:	81 bb       	out	0x11, r24	; 17
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 528:	80 e0       	ldi	r24, 0x00	; 0
+ 52a:	08 95       	ret
+	}
+	else
+	{
+		return ERROR_NOK;
+ 52c:	81 e0       	ldi	r24, 0x01	; 1
+ 52e:	08 95       	ret
+		}
+		else
+		{
+			return ERROR_NOK;
+		}
+		return ERROR_OK;
+ 530:	80 e0       	ldi	r24, 0x00	; 0
+ 532:	08 95       	ret
+			else if(u8Pin_Number >= 16 && u8Pin_Number < 24)   DDRC &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+			else if(u8Pin_Number >= 24 && u8Pin_Number < 32)   DDRD &=  ~(1 << (u8Pin_Number%BITS_PER_REGISTER)) ;
+		}
+		else
+		{
+			return ERROR_NOK;
+ 534:	81 e0       	ldi	r24, 0x01	; 1
+ 536:	08 95       	ret
+		}
+		return ERROR_OK;
+ 538:	80 e0       	ldi	r24, 0x00	; 0
+	}
+	else
+	{
+		return ERROR_NOK;
+	}
+}
+ 53a:	08 95       	ret
+
+0000053c <main>:
+#include "BCM.h"
+#define F_CPU 8000000ul
+#include <util/delay.h>
+
+int main(void)
+{
+ 53c:	cf 93       	push	r28
+ 53e:	df 93       	push	r29
+ 540:	cd b7       	in	r28, 0x3d	; 61
+ 542:	de b7       	in	r29, 0x3e	; 62
+ 544:	68 97       	sbiw	r28, 0x18	; 24
+ 546:	0f b6       	in	r0, 0x3f	; 63
+ 548:	f8 94       	cli
+ 54a:	de bf       	out	0x3e, r29	; 62
+ 54c:	0f be       	out	0x3f, r0	; 63
+ 54e:	cd bf       	out	0x3d, r28	; 61
+    /* Replace with your application code */
+	//LCD_vInit();
+	char Arr[10] = {1,2,3,4,5,6,7,8,9,9} ;
+ 550:	2a e0       	ldi	r18, 0x0A	; 10
+ 552:	e0 e6       	ldi	r30, 0x60	; 96
+ 554:	f0 e0       	ldi	r31, 0x00	; 0
+ 556:	ce 01       	movw	r24, r28
+ 558:	01 96       	adiw	r24, 0x01	; 1
+ 55a:	dc 01       	movw	r26, r24
+ 55c:	01 90       	ld	r0, Z+
+ 55e:	0d 92       	st	X+, r0
+ 560:	2a 95       	dec	r18
+ 562:	e1 f7       	brne	.-8      	; 0x55c <main+0x20>
+	//LCD_vPrintchar('H') ;
+	strBCM_Cfg CONFIG ;
+	CONFIG.Address = &Arr ;
+ 564:	09 2e       	mov	r0, r25
+ 566:	00 0c       	add	r0, r0
+ 568:	aa 0b       	sbc	r26, r26
+ 56a:	bb 0b       	sbc	r27, r27
+ 56c:	89 8b       	std	Y+17, r24	; 0x11
+ 56e:	9a 8b       	std	Y+18, r25	; 0x12
+ 570:	ab 8b       	std	Y+19, r26	; 0x13
+ 572:	bc 8b       	std	Y+20, r27	; 0x14
+	CONFIG.BaudRate = 9600 ;
+ 574:	80 e8       	ldi	r24, 0x80	; 128
+ 576:	95 e2       	ldi	r25, 0x25	; 37
+ 578:	a0 e0       	ldi	r26, 0x00	; 0
+ 57a:	b0 e0       	ldi	r27, 0x00	; 0
+ 57c:	8b 87       	std	Y+11, r24	; 0x0b
+ 57e:	9c 87       	std	Y+12, r25	; 0x0c
+ 580:	ad 87       	std	Y+13, r26	; 0x0d
+ 582:	be 87       	std	Y+14, r27	; 0x0e
+	CONFIG.Data_length = 10 ;
+ 584:	8a e0       	ldi	r24, 0x0A	; 10
+ 586:	90 e0       	ldi	r25, 0x00	; 0
+ 588:	98 8b       	std	Y+16, r25	; 0x10
+ 58a:	8f 87       	std	Y+15, r24	; 0x0f
+	CONFIG.ID = 0x15 ;
+ 58c:	85 e1       	ldi	r24, 0x15	; 21
+ 58e:	90 e0       	ldi	r25, 0x00	; 0
+ 590:	a0 e0       	ldi	r26, 0x00	; 0
+ 592:	b0 e0       	ldi	r27, 0x00	; 0
+ 594:	8d 8b       	std	Y+21, r24	; 0x15
+ 596:	9e 8b       	std	Y+22, r25	; 0x16
+ 598:	af 8b       	std	Y+23, r26	; 0x17
+ 59a:	b8 8f       	std	Y+24, r27	; 0x18
+	BCM_Init(&CONFIG) ;
+ 59c:	ce 01       	movw	r24, r28
+ 59e:	0b 96       	adiw	r24, 0x0b	; 11
+ 5a0:	0e 94 49 00 	call	0x92	; 0x92 <BCM_Init>
+	BCM_Send(0x01) ;
+ 5a4:	61 e0       	ldi	r22, 0x01	; 1
+ 5a6:	70 e0       	ldi	r23, 0x00	; 0
+ 5a8:	80 e0       	ldi	r24, 0x00	; 0
+ 5aa:	90 e0       	ldi	r25, 0x00	; 0
+ 5ac:	0e 94 45 01 	call	0x28a	; 0x28a <BCM_Send>
+	DDRB = 0xff ;
+ 5b0:	8f ef       	ldi	r24, 0xFF	; 255
+ 5b2:	87 bb       	out	0x17, r24	; 23
+    while (1) 
+    {
+		BCM_DISPATCHER();
+ 5b4:	0e 94 9e 00 	call	0x13c	; 0x13c <BCM_DISPATCHER>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 5b8:	8f e1       	ldi	r24, 0x1F	; 31
+ 5ba:	9e e4       	ldi	r25, 0x4E	; 78
+ 5bc:	01 97       	sbiw	r24, 0x01	; 1
+ 5be:	f1 f7       	brne	.-4      	; 0x5bc <main+0x80>
+ 5c0:	00 c0       	rjmp	.+0      	; 0x5c2 <main+0x86>
+ 5c2:	00 00       	nop
+ 5c4:	f7 cf       	rjmp	.-18     	; 0x5b4 <main+0x78>
+
+000005c6 <__vector_14>:
+void __vector_14(void)__attribute((signal,used));
+
+void __vector_13(void)__attribute((signal,used));
+
+void __vector_14 (void)
+{
+ 5c6:	1f 92       	push	r1
+ 5c8:	0f 92       	push	r0
+ 5ca:	0f b6       	in	r0, 0x3f	; 63
+ 5cc:	0f 92       	push	r0
+ 5ce:	11 24       	eor	r1, r1
+ 5d0:	2f 93       	push	r18
+ 5d2:	3f 93       	push	r19
+ 5d4:	8f 93       	push	r24
+ 5d6:	9f 93       	push	r25
+	UDR = gu8_DataTransmit ;
+ 5d8:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <gu8_DataTransmit>
+ 5dc:	8c b9       	out	0x0c, r24	; 12
+	DDRA = 0xFF ;
+ 5de:	8f ef       	ldi	r24, 0xFF	; 255
+ 5e0:	8a bb       	out	0x1a, r24	; 26
+	DDRB = 0xFF ;
+ 5e2:	87 bb       	out	0x17, r24	; 23
+	PORTA = BCM_State ;
+ 5e4:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <BCM_State>
+ 5e8:	8b bb       	out	0x1b, r24	; 27
+	if(i_count<Data_Length_BCM)
+ 5ea:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 5ee:	90 91 6b 00 	lds	r25, 0x006B	; 0x80006b <__data_end+0x1>
+ 5f2:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <Data_Length_BCM>
+ 5f6:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <Data_Length_BCM+0x1>
+ 5fa:	82 17       	cp	r24, r18
+ 5fc:	93 07       	cpc	r25, r19
+ 5fe:	6c f4       	brge	.+26     	; 0x61a <__vector_14+0x54>
+	{  
+		BCM_State = SENDING_COMPLETE ;
+ 600:	22 e0       	ldi	r18, 0x02	; 2
+ 602:	30 e0       	ldi	r19, 0x00	; 0
+ 604:	30 93 6f 00 	sts	0x006F, r19	; 0x80006f <BCM_State+0x1>
+ 608:	20 93 6e 00 	sts	0x006E, r18	; 0x80006e <BCM_State>
+		i_count++ ;
+ 60c:	01 96       	adiw	r24, 0x01	; 1
+ 60e:	90 93 6b 00 	sts	0x006B, r25	; 0x80006b <__data_end+0x1>
+ 612:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <__data_end>
+		PORTB = i_count ;
+ 616:	88 bb       	out	0x18, r24	; 24
+ 618:	06 c0       	rjmp	.+12     	; 0x626 <__vector_14+0x60>
+	}
+	else if(i_count>=Data_Length_BCM)
+	{
+		BCM_State = FRAME_COMPLETE ;
+ 61a:	83 e0       	ldi	r24, 0x03	; 3
+ 61c:	90 e0       	ldi	r25, 0x00	; 0
+ 61e:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <BCM_State+0x1>
+ 622:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <BCM_State>
+	}
+	CLEAR_BIT(UCSRB,UDRIE);
+ 626:	55 98       	cbi	0x0a, 5	; 10
+}
+ 628:	9f 91       	pop	r25
+ 62a:	8f 91       	pop	r24
+ 62c:	3f 91       	pop	r19
+ 62e:	2f 91       	pop	r18
+ 630:	0f 90       	pop	r0
+ 632:	0f be       	out	0x3f, r0	; 63
+ 634:	0f 90       	pop	r0
+ 636:	1f 90       	pop	r1
+ 638:	18 95       	reti
+
+0000063a <__vector_13>:
+void __vector_13 (void)
+{
+ 63a:	1f 92       	push	r1
+ 63c:	0f 92       	push	r0
+ 63e:	0f b6       	in	r0, 0x3f	; 63
+ 640:	0f 92       	push	r0
+ 642:	11 24       	eor	r1, r1
+ 644:	2f 93       	push	r18
+ 646:	3f 93       	push	r19
+ 648:	4f 93       	push	r20
+ 64a:	5f 93       	push	r21
+ 64c:	6f 93       	push	r22
+ 64e:	7f 93       	push	r23
+ 650:	8f 93       	push	r24
+ 652:	9f 93       	push	r25
+ 654:	af 93       	push	r26
+ 656:	bf 93       	push	r27
+ 658:	ef 93       	push	r30
+ 65a:	ff 93       	push	r31
+	DIO_INIT_Pin (B2,1);
+ 65c:	61 e0       	ldi	r22, 0x01	; 1
+ 65e:	8a e0       	ldi	r24, 0x0A	; 10
+ 660:	0e 94 f5 01 	call	0x3ea	; 0x3ea <DIO_INIT_Pin>
+	DIO_WRITE_PIN (B2,1);
+ 664:	61 e0       	ldi	r22, 0x01	; 1
+ 666:	8a e0       	ldi	r24, 0x0A	; 10
+ 668:	0e 94 4c 01 	call	0x298	; 0x298 <DIO_WRITE_PIN>
+	gu8_DataReceive = UDR ;
+ 66c:	8c b1       	in	r24, 0x0c	; 12
+ 66e:	80 93 7f 00 	sts	0x007F, r24	; 0x80007f <gu8_DataReceive>
+}
+ 672:	ff 91       	pop	r31
+ 674:	ef 91       	pop	r30
+ 676:	bf 91       	pop	r27
+ 678:	af 91       	pop	r26
+ 67a:	9f 91       	pop	r25
+ 67c:	8f 91       	pop	r24
+ 67e:	7f 91       	pop	r23
+ 680:	6f 91       	pop	r22
+ 682:	5f 91       	pop	r21
+ 684:	4f 91       	pop	r20
+ 686:	3f 91       	pop	r19
+ 688:	2f 91       	pop	r18
+ 68a:	0f 90       	pop	r0
+ 68c:	0f be       	out	0x3f, r0	; 63
+ 68e:	0f 90       	pop	r0
+ 690:	1f 90       	pop	r1
+ 692:	18 95       	reti
+
+00000694 <UART_init>:
+
+/*******************************************************************************
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+UART_ERROR UART_init(const strUART_Config *UART_Cfg)
+{
+ 694:	fc 01       	movw	r30, r24
+	uint8_t ERROR  = ERROR_OK;
+	/**********************Enabling Full Duplex Transmission**********************/
+	SET_BIT(UCSRB,RXEN) ;
+ 696:	54 9a       	sbi	0x0a, 4	; 10
+	SET_BIT(UCSRB,TXEN) ;
+ 698:	53 9a       	sbi	0x0a, 3	; 10
+	/******************Checking Speed Mode & BAUDRATE ************************************/
+	CLEAR_BIT(UBRRH,URSEL) ; /***********************to Write in UBRRH REGISTERS***********/
+ 69a:	80 b5       	in	r24, 0x20	; 32
+ 69c:	8f 77       	andi	r24, 0x7F	; 127
+ 69e:	80 bd       	out	0x20, r24	; 32
+	switch(UART_Cfg->u8_SpeedMode)
+ 6a0:	80 81       	ld	r24, Z
+ 6a2:	88 23       	and	r24, r24
+ 6a4:	19 f0       	breq	.+6      	; 0x6ac <UART_init+0x18>
+ 6a6:	81 30       	cpi	r24, 0x01	; 1
+ 6a8:	39 f0       	breq	.+14     	; 0x6b8 <UART_init+0x24>
+ 6aa:	0c c0       	rjmp	.+24     	; 0x6c4 <UART_init+0x30>
+	{
+		case NORMAL_SPEED :
+			CLEAR_BIT(UCSRA,U2X);
+ 6ac:	59 98       	cbi	0x0b, 1	; 11
+			/**************************BAUDRATE****************************************/
+			/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+			UBRRH = BAUD_PRESCALE_SINGLE>>8;
+ 6ae:	10 bc       	out	0x20, r1	; 32
+			UBRRL = BAUD_PRESCALE_SINGLE;
+ 6b0:	83 e3       	ldi	r24, 0x33	; 51
+ 6b2:	89 b9       	out	0x09, r24	; 9
+/*******************************************************************************
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+UART_ERROR UART_init(const strUART_Config *UART_Cfg)
+{
+	uint8_t ERROR  = ERROR_OK;
+ 6b4:	80 e0       	ldi	r24, 0x00	; 0
+			CLEAR_BIT(UCSRA,U2X);
+			/**************************BAUDRATE****************************************/
+			/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+			UBRRH = BAUD_PRESCALE_SINGLE>>8;
+			UBRRL = BAUD_PRESCALE_SINGLE;
+			break;
+ 6b6:	07 c0       	rjmp	.+14     	; 0x6c6 <UART_init+0x32>
+		case DOUBLE_SPEED :
+			SET_BIT(UCSRA,U2X) ;
+ 6b8:	59 9a       	sbi	0x0b, 1	; 11
+			/**************************BAUDRATE****************************************/
+			/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+			UBRRH = BAUD_PRESCALE_DOUBLE>>8;
+ 6ba:	10 bc       	out	0x20, r1	; 32
+			UBRRL = BAUD_PRESCALE_DOUBLE;
+ 6bc:	87 e6       	ldi	r24, 0x67	; 103
+ 6be:	89 b9       	out	0x09, r24	; 9
+/*******************************************************************************
+ *                      Functions Definitions                                  *
+ *******************************************************************************/
+UART_ERROR UART_init(const strUART_Config *UART_Cfg)
+{
+	uint8_t ERROR  = ERROR_OK;
+ 6c0:	80 e0       	ldi	r24, 0x00	; 0
+			SET_BIT(UCSRA,U2X) ;
+			/**************************BAUDRATE****************************************/
+			/* First 8 bits from the BAUD_PRESCALE inside UBRRL and last 4 bits in UBRRH*/
+			UBRRH = BAUD_PRESCALE_DOUBLE>>8;
+			UBRRL = BAUD_PRESCALE_DOUBLE;
+			break;
+ 6c2:	01 c0       	rjmp	.+2      	; 0x6c6 <UART_init+0x32>
+		default :
+			ERROR = ERROR_NOK ;
+ 6c4:	81 e0       	ldi	r24, 0x01	; 1
+			break ;	
+	}
+	/**********************Synchronous or Asynchronous Operation **************/
+	SET_BIT(UCSRC,URSEL) ; /******************Setting to Access UCRSC Register********/
+ 6c6:	90 b5       	in	r25, 0x20	; 32
+ 6c8:	90 68       	ori	r25, 0x80	; 128
+ 6ca:	90 bd       	out	0x20, r25	; 32
+	switch(UART_Cfg->u8_Sync)
+ 6cc:	93 81       	ldd	r25, Z+3	; 0x03
+ 6ce:	99 23       	and	r25, r25
+ 6d0:	19 f0       	breq	.+6      	; 0x6d8 <UART_init+0x44>
+ 6d2:	91 30       	cpi	r25, 0x01	; 1
+ 6d4:	29 f0       	breq	.+10     	; 0x6e0 <UART_init+0x4c>
+ 6d6:	08 c0       	rjmp	.+16     	; 0x6e8 <UART_init+0x54>
+	{
+		case SYNCHRONOUS:
+			SET_BIT(UCSRC,UMSEL);
+ 6d8:	90 b5       	in	r25, 0x20	; 32
+ 6da:	90 64       	ori	r25, 0x40	; 64
+ 6dc:	90 bd       	out	0x20, r25	; 32
+			break;
+ 6de:	05 c0       	rjmp	.+10     	; 0x6ea <UART_init+0x56>
+		case ASYNCHRONOUS:
+			CLEAR_BIT(UCSRC,UMSEL);
+ 6e0:	90 b5       	in	r25, 0x20	; 32
+ 6e2:	9f 7b       	andi	r25, 0xBF	; 191
+ 6e4:	90 bd       	out	0x20, r25	; 32
+			break ;
+ 6e6:	01 c0       	rjmp	.+2      	; 0x6ea <UART_init+0x56>
+		default:
+			ERROR = ERROR_NOK ;
+ 6e8:	81 e0       	ldi	r24, 0x01	; 1
+	}
+	/***********************FRAME DATA BITS*************************************/
+	switch(UART_Cfg->u8_DataBits)
+ 6ea:	94 81       	ldd	r25, Z+4	; 0x04
+ 6ec:	97 30       	cpi	r25, 0x07	; 7
+ 6ee:	d9 f0       	breq	.+54     	; 0x726 <UART_init+0x92>
+ 6f0:	28 f4       	brcc	.+10     	; 0x6fc <UART_init+0x68>
+ 6f2:	95 30       	cpi	r25, 0x05	; 5
+ 6f4:	41 f0       	breq	.+16     	; 0x706 <UART_init+0x72>
+ 6f6:	96 30       	cpi	r25, 0x06	; 6
+ 6f8:	71 f0       	breq	.+28     	; 0x716 <UART_init+0x82>
+ 6fa:	2d c0       	rjmp	.+90     	; 0x756 <UART_init+0xc2>
+ 6fc:	98 30       	cpi	r25, 0x08	; 8
+ 6fe:	d9 f0       	breq	.+54     	; 0x736 <UART_init+0xa2>
+ 700:	99 30       	cpi	r25, 0x09	; 9
+ 702:	09 f1       	breq	.+66     	; 0x746 <UART_init+0xb2>
+ 704:	28 c0       	rjmp	.+80     	; 0x756 <UART_init+0xc2>
+	{
+		case FIVE_BITS:
+			CLEAR_BIT(UCSRC,UCSZ0) ;
+ 706:	90 b5       	in	r25, 0x20	; 32
+ 708:	9d 7f       	andi	r25, 0xFD	; 253
+ 70a:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRC,UCSZ1) ;
+ 70c:	90 b5       	in	r25, 0x20	; 32
+ 70e:	9b 7f       	andi	r25, 0xFB	; 251
+ 710:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRB,UCSZ2) ;
+ 712:	52 98       	cbi	0x0a, 2	; 10
+			break; 
+ 714:	21 c0       	rjmp	.+66     	; 0x758 <UART_init+0xc4>
+		case SIX_BITS:
+			SET_BIT(UCSRC,UCSZ0) ;
+ 716:	90 b5       	in	r25, 0x20	; 32
+ 718:	92 60       	ori	r25, 0x02	; 2
+ 71a:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRC,UCSZ1) ;
+ 71c:	90 b5       	in	r25, 0x20	; 32
+ 71e:	9b 7f       	andi	r25, 0xFB	; 251
+ 720:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRB,UCSZ2) ;
+ 722:	52 98       	cbi	0x0a, 2	; 10
+			break;
+ 724:	19 c0       	rjmp	.+50     	; 0x758 <UART_init+0xc4>
+		case SEVEN_BITS:
+			CLEAR_BIT(UCSRC,UCSZ0) ;
+ 726:	90 b5       	in	r25, 0x20	; 32
+ 728:	9d 7f       	andi	r25, 0xFD	; 253
+ 72a:	90 bd       	out	0x20, r25	; 32
+			SET_BIT(UCSRC,UCSZ1) ;
+ 72c:	90 b5       	in	r25, 0x20	; 32
+ 72e:	94 60       	ori	r25, 0x04	; 4
+ 730:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRB,UCSZ2) ;
+ 732:	52 98       	cbi	0x0a, 2	; 10
+			break;
+ 734:	11 c0       	rjmp	.+34     	; 0x758 <UART_init+0xc4>
+		case EIGHT_BITS:
+			SET_BIT(UCSRC,UCSZ0) ;
+ 736:	90 b5       	in	r25, 0x20	; 32
+ 738:	92 60       	ori	r25, 0x02	; 2
+ 73a:	90 bd       	out	0x20, r25	; 32
+			SET_BIT(UCSRC,UCSZ1) ;
+ 73c:	90 b5       	in	r25, 0x20	; 32
+ 73e:	94 60       	ori	r25, 0x04	; 4
+ 740:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRB,UCSZ2) ;
+ 742:	52 98       	cbi	0x0a, 2	; 10
+			break;
+ 744:	09 c0       	rjmp	.+18     	; 0x758 <UART_init+0xc4>
+		case NINE_BITS:
+			SET_BIT(UCSRC,UCSZ0) ;
+ 746:	90 b5       	in	r25, 0x20	; 32
+ 748:	92 60       	ori	r25, 0x02	; 2
+ 74a:	90 bd       	out	0x20, r25	; 32
+			SET_BIT(UCSRC,UCSZ1) ;
+ 74c:	90 b5       	in	r25, 0x20	; 32
+ 74e:	94 60       	ori	r25, 0x04	; 4
+ 750:	90 bd       	out	0x20, r25	; 32
+			SET_BIT(UCSRB,UCSZ2) ;
+ 752:	52 9a       	sbi	0x0a, 2	; 10
+			break;	
+ 754:	01 c0       	rjmp	.+2      	; 0x758 <UART_init+0xc4>
+		default:
+			ERROR = ERROR_NOK ;
+ 756:	81 e0       	ldi	r24, 0x01	; 1
+			break;
+	}
+	/****************************PARITY CHECKING****************************/
+	switch(UART_Cfg->u8_Parity)
+ 758:	95 81       	ldd	r25, Z+5	; 0x05
+ 75a:	91 30       	cpi	r25, 0x01	; 1
+ 75c:	59 f0       	breq	.+22     	; 0x774 <UART_init+0xe0>
+ 75e:	18 f0       	brcs	.+6      	; 0x766 <UART_init+0xd2>
+ 760:	92 30       	cpi	r25, 0x02	; 2
+ 762:	79 f0       	breq	.+30     	; 0x782 <UART_init+0xee>
+ 764:	15 c0       	rjmp	.+42     	; 0x790 <UART_init+0xfc>
+	{
+		case PARITY_DISABLED:
+			CLEAR_BIT(UCSRC,UPM1);
+ 766:	90 b5       	in	r25, 0x20	; 32
+ 768:	9f 7d       	andi	r25, 0xDF	; 223
+ 76a:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRC,UPM0);
+ 76c:	90 b5       	in	r25, 0x20	; 32
+ 76e:	9f 7e       	andi	r25, 0xEF	; 239
+ 770:	90 bd       	out	0x20, r25	; 32
+			break;
+ 772:	0f c0       	rjmp	.+30     	; 0x792 <UART_init+0xfe>
+		case EVEN_PARITY:
+			SET_BIT(UCSRC,UPM1);
+ 774:	90 b5       	in	r25, 0x20	; 32
+ 776:	90 62       	ori	r25, 0x20	; 32
+ 778:	90 bd       	out	0x20, r25	; 32
+			CLEAR_BIT(UCSRC,UPM0);
+ 77a:	90 b5       	in	r25, 0x20	; 32
+ 77c:	9f 7e       	andi	r25, 0xEF	; 239
+ 77e:	90 bd       	out	0x20, r25	; 32
+			break;
+ 780:	08 c0       	rjmp	.+16     	; 0x792 <UART_init+0xfe>
+		case ODD_PARITY:
+			SET_BIT(UCSRC,UPM1);
+ 782:	90 b5       	in	r25, 0x20	; 32
+ 784:	90 62       	ori	r25, 0x20	; 32
+ 786:	90 bd       	out	0x20, r25	; 32
+			SET_BIT(UCSRC,UPM0);
+ 788:	90 b5       	in	r25, 0x20	; 32
+ 78a:	90 61       	ori	r25, 0x10	; 16
+ 78c:	90 bd       	out	0x20, r25	; 32
+			break;
+ 78e:	01 c0       	rjmp	.+2      	; 0x792 <UART_init+0xfe>
+		default:
+			ERROR = ERROR_NOK ;
+ 790:	81 e0       	ldi	r24, 0x01	; 1
+			break;
+	}
+	/************************** STOP BITS************************************/
+	switch(UART_Cfg->u8_StopBits)
+ 792:	96 81       	ldd	r25, Z+6	; 0x06
+ 794:	99 23       	and	r25, r25
+ 796:	19 f0       	breq	.+6      	; 0x79e <UART_init+0x10a>
+ 798:	91 30       	cpi	r25, 0x01	; 1
+ 79a:	29 f0       	breq	.+10     	; 0x7a6 <UART_init+0x112>
+ 79c:	08 c0       	rjmp	.+16     	; 0x7ae <UART_init+0x11a>
+	{
+		case ONE_STOP:
+			SET_BIT(UCSRC,USBS) ;
+ 79e:	90 b5       	in	r25, 0x20	; 32
+ 7a0:	98 60       	ori	r25, 0x08	; 8
+ 7a2:	90 bd       	out	0x20, r25	; 32
+			break;
+ 7a4:	05 c0       	rjmp	.+10     	; 0x7b0 <UART_init+0x11c>
+		case TWO_STOP:
+			CLEAR_BIT(UCSRC,USBS) ;
+ 7a6:	90 b5       	in	r25, 0x20	; 32
+ 7a8:	97 7f       	andi	r25, 0xF7	; 247
+ 7aa:	90 bd       	out	0x20, r25	; 32
+			break;
+ 7ac:	01 c0       	rjmp	.+2      	; 0x7b0 <UART_init+0x11c>
+		default:
+			ERROR = ERROR_NOK ;
+ 7ae:	81 e0       	ldi	r24, 0x01	; 1
+			break;		
+	}
+	/********************Interrup or Polling Mode****************************/
+	switch(UART_Cfg->u8_Interrupt)
+ 7b0:	97 81       	ldd	r25, Z+7	; 0x07
+ 7b2:	99 23       	and	r25, r25
+ 7b4:	19 f0       	breq	.+6      	; 0x7bc <UART_init+0x128>
+ 7b6:	91 30       	cpi	r25, 0x01	; 1
+ 7b8:	29 f0       	breq	.+10     	; 0x7c4 <UART_init+0x130>
+ 7ba:	08 c0       	rjmp	.+16     	; 0x7cc <UART_init+0x138>
+	{
+		case INTERRUPT_MODE:
+		//SET_BIT(UCSRB,TXCIE) ;
+		//SET_BIT(UCSRB,RXCIE) ;
+		SET_BIT(SREG,I_BIT) ;
+ 7bc:	9f b7       	in	r25, 0x3f	; 63
+ 7be:	90 68       	ori	r25, 0x80	; 128
+ 7c0:	9f bf       	out	0x3f, r25	; 63
+		break;
+ 7c2:	08 95       	ret
+		case POLLING_MODE:
+		CLEAR_BIT(SREG,I_BIT) ;
+ 7c4:	9f b7       	in	r25, 0x3f	; 63
+ 7c6:	9f 77       	andi	r25, 0x7F	; 127
+ 7c8:	9f bf       	out	0x3f, r25	; 63
+		break;
+ 7ca:	08 95       	ret
+		default:
+		ERROR = ERROR_NOK ;
+ 7cc:	81 e0       	ldi	r24, 0x01	; 1
+	 * UCSZ1:0 = 11 For 8-bit data mode
+	 * UCPOL   = 0 Used with the Synchronous operation only
+	 ***********************************************************************/ 	
+	//UCSRC = (1<<URSEL) | (1<<UCSZ0) | (1<<UCSZ1); 
+	return ERROR ;
+}
+ 7ce:	08 95       	ret
+
+000007d0 <UART_sendByte>:
+	/*while(BIT_IS_CLEAR(UCSRA,UDRE)){}
+	gu8_DataTransmit = data ;
+	SET_BIT(UCSRB,UDRIE) ;*/
+	/*************running on Interrupt BCM MODE*******/
+	//PORTB = 0x03;
+	if(BIT_IS_CLEAR(UCSRA,UDRE))
+ 7d0:	5d 99       	sbic	0x0b, 5	; 11
+ 7d2:	07 c0       	rjmp	.+14     	; 0x7e2 <UART_sendByte+0x12>
+	{
+		 BCM_State = SENDING_BYTE ;
+ 7d4:	81 e0       	ldi	r24, 0x01	; 1
+ 7d6:	90 e0       	ldi	r25, 0x00	; 0
+ 7d8:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <BCM_State+0x1>
+ 7dc:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <BCM_State>
+ 7e0:	03 c0       	rjmp	.+6      	; 0x7e8 <UART_sendByte+0x18>
+		 //PORTB = SENDING_BYTE ;
+	}
+	else
+	{
+		gu8_DataTransmit = data ;
+ 7e2:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <gu8_DataTransmit>
+		//BCM_State = SENDING_COMPLETE ;	
+		SET_BIT(UCSRB,UDRIE) ;
+ 7e6:	55 9a       	sbi	0x0a, 5	; 10
+	/*SET_BIT(PORTB,5) ;
+	while(BIT_IS_CLEAR(UCSRA,UDRE)){}
+	UDR = data;
+	SET_BIT(PORTB,6) ;*/
+	return ERROR_OK ;
+}
+ 7e8:	80 e0       	ldi	r24, 0x00	; 0
+ 7ea:	08 95       	ret
+
+000007ec <_exit>:
+ 7ec:	f8 94       	cli
+
+000007ee <__stop_program>:
+ 7ee:	ff cf       	rjmp	.-2      	; 0x7ee <__stop_program>
